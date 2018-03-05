@@ -1,0 +1,490 @@
+fibonacci series
+================
+import java.util.Scanner;
+ 
+public class Fabonacci {
+ 
+    public static void main(String[] args) {
+         
+        int SeriesNum ;
+        Scanner sc=new Scanner(System.in);
+         
+        System.out.print("Enter the length of fibonacci series : ");
+        SeriesNum=sc.nextInt();
+         
+             int[] num = new int[SeriesNum];
+             num[0] = 0;
+             num[1] = 1;    
+             for(int i=2; i < SeriesNum; i++){
+                 num[i] = num[i-1] + num[i-2];
+             }
+      
+             System.out.println("fibonacci series : ");
+             for(int i=0; i< SeriesNum; i++){
+                     System.out.print(num[i] + " ");
+             }
+    }
+ 
+}
+
+
+
+factorial
+=========
+import java.util.*;
+ 
+public class Factorial
+{
+    public static void main(String args[]){
+        int num;
+        long factorial;
+         
+        Scanner bf=new Scanner(System.in);
+         
+        //input an integer number
+        System.out.print("Enter any integer number: ");
+        num= bf.nextInt();
+         
+        //find factorial
+        factorial=1;
+        for(int loop=num; loop>=1; loop--)
+            factorial*=loop;
+         
+        System.out.println("Factorial of " + num + " is: " + factorial);
+    }
+}
+
+
+
+
+
+check prime or not
+==================
+import java.util.*;
+ 
+public class Prime
+{
+    public static void main(String args[]){
+        int num,loop;
+        boolean flag=false;
+         
+        Scanner bf=new Scanner(System.in);
+         
+        //input an integer number
+        System.out.print("Enter any integer number: ");
+        num= bf.nextInt();
+         
+        //check prime
+        for(loop=2; loop<=(num/2); loop++)
+        {
+            if(num%loop==0)
+            {
+                flag=true;
+                break;
+            }
+        }
+         
+        if(flag==false)
+            System.out.println(num + " is a prime number.");
+        else
+            System.out.println(num + " is not a prime number.");
+    }
+}
+
+
+
+check the number is palindrome
+==============================
+import java.util.*;
+ 
+public class Palindrome
+{
+    public static void main(String args[]){
+        int num,tNum,sum;
+         
+        Scanner bf=new Scanner(System.in);
+         
+        //input an integer number
+        System.out.print("Enter any integer number: ");
+        num= bf.nextInt();
+         
+        //find reverse number
+        tNum=num;
+        sum =0;
+        while(tNum>0)
+        {
+            sum = (sum*10) + (tNum%10);
+            tNum/=10;
+        }
+         
+        //check inputted number with reversed number
+        if(num==sum)
+            System.out.println(num + " is a Palindrome Number.");
+        else
+            System.out.println(num + " is not a Palindrome Number.");
+    }
+}
+
+
+
+reverse the number
+======================
+import java.util.*;
+ 
+public class ReverseNumber{
+ 
+     public static void main(String []args){
+        int number;
+         
+        Scanner sc=new Scanner(System.in);
+         
+        //Read Number
+        System.out.print("Enter an integer number: ");
+        number=sc.nextInt();
+         
+        //calculate reverse number
+        int reverse_number=0;
+        while(number>0)
+        {
+            reverse_number = (reverse_number*10) + number%10;
+            number/=10;
+        }
+         
+        System.out.println("Reverse Number is: " + reverse_number); 
+         
+     }
+}
+
+
+
+
+
+reverse the string
+====================
+import java.util.*;
+ 
+public class ReverseString
+{
+    public static void main(String args[]){
+        String str;
+        String rStr="";
+        Scanner bf=new Scanner(System.in);
+         
+        //input an integer number
+        System.out.print("Enter any string: ");
+        str=bf.nextLine();
+         
+        //Reversing String
+        StringBuffer a = new StringBuffer(str);
+        System.out.println(a.reverse());
+         
+        //rStr=str.reverse();
+         
+        System.out.println("Reversed string is: " + rStr);
+    }
+}
+
+
+
+
+
+
+print even num  /odd numbers
+==============
+import java.util.*;
+ 
+public class Even{
+ 
+    public static void main(String []args)
+    {
+        int n=0,i=0;
+         
+        Scanner X = new Scanner(System.in);
+         
+        System.out.print("Enter value n : ");
+        n = X.nextInt();
+         
+        for(i=1; i<n; i++)
+        {
+            if(i%2==0)				i%2==1 or use !=0
+                System.out.print(i+" ");
+        }   
+        System.out.println();
+         
+    }
+}
+
+
+
+
+
+
+print random numbers
+====================
+import java.util.Scanner;
+import java.util.Random;
+  
+class RandomNumber
+{
+  public static void main(String[] args) 
+  {
+      int maxRange;
+       
+      Scanner SC=new Scanner(System.in);
+      //instance of Random class
+      Random rand=new Random();
+       
+      System.out.print("Enter maximum range: ");
+      maxRange=SC.nextInt();
+       
+      //generate 10 random numbers from 0 to maxRange
+      for(int loop=1; loop<=10; loop++)
+      {
+          System.out.println(rand.nextInt(maxRange));
+      }
+  }
+}
+
+
+
+print prime 1 to n using boolean fn
+===================
+import java.util.Scanner;
+  
+class PrintPrimeNumbers
+{
+    //method to check number is prime or not
+    static boolean isPrime(int num)
+    {
+        boolean flag=true;
+        for(int i=2; i<=(num/2);i++)
+        {
+            if(num%i==0)
+            {
+                flag=false;
+                break;
+            }
+        }
+        return flag;
+    }
+  public static void main(String[] args) 
+  {
+      int n;
+      Scanner SC=new Scanner(System.in);
+       
+      System.out.print("Enter the value of N: ");
+      n=SC.nextInt();
+       
+      for(int loop=2; loop<=n; loop++)
+      {
+          if(isPrime(loop)==true)
+              System.out.print(loop+" ");
+      }
+  }
+}
+
+
+
+
+
+add matrics
+===========
+import java.util.*;
+ 
+public class AddMatrices
+{
+    public static void main(String args[])
+    {
+        int row,col;
+         
+        Scanner sc=new Scanner(System.in);
+         
+        //Read number of rows and cols
+        System.out.print("Input number of rows: ");
+        row=sc.nextInt();
+        System.out.print("Input number of rows: ");
+        col=sc.nextInt();
+         
+        //declare two dimensional array (matrices)
+        int a[][]=new int[row][col];    //for matrix 1
+        int b[][]=new int[row][col];    //for matrix 2
+        int c[][]=new int[row][col];    //for matrix 3
+         
+        //Read elements of Matrix a
+        System.out.println("Enter elements of matrix a:");
+        for(int i=0; i<row; i++)
+        {
+            for(int j=0; j<col; j++)
+            {
+                System.out.print("Element [" + (i+1) + "," + (j+1) + "] ? ");
+                a[i][j]=sc.nextInt();
+            }
+        }
+        //Read elements of Matrix b
+        System.out.println("Enter elements of matrix b:");
+        for(int i=0; i<row; i++)
+        {
+            for(int j=0; j<col; j++)
+            {
+                System.out.print("Element [" + (i+1) + "," + (j+1) + "] ? ");
+                b[i][j]=sc.nextInt();
+            }
+        }
+         
+         
+        //print matrix a
+        System.out.println("Matrix a:");
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                System.out.print(a[i][j] + "\t");
+            }
+            System.out.print("\n");
+        }
+         
+        //print matrix b
+        System.out.println("Matrix b:");
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                System.out.print(b[i][j] + "\t");
+            }
+            System.out.print("\n"); 
+        }
+         
+        //adding matrices
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                c[i][j]=a[i][j];
+            }
+        }
+         
+        //print matrix b
+        System.out.println(":: Final Matrix:");
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                System.out.print(c[i][j] + "\t");
+            }
+            System.out.print("\n"); 
+        }
+         
+    }   
+}
+
+
+transpose matrix
+================
+import java.util.*;
+ 
+public class TransposeMatrix
+{
+    public static void main(String args[])
+    {
+        int row,col;
+         
+        Scanner sc=new Scanner(System.in);
+         
+        //Read number of rows and cols
+        System.out.print("Input number of rows: ");
+        row=sc.nextInt();
+        System.out.print("Input number of rows: ");
+        col=sc.nextInt();
+         
+        //declare two dimensional array (matrices)
+        int a[][]=new int[row][col];
+ 
+         
+        //Read elements of Matrix a
+        System.out.println("Enter elements of matrix a:");
+        for(int i=0; i<row; i++)
+        {
+            for(int j=0; j<col; j++)
+            {
+                System.out.print("Element [" + (i+1) + "," + (j+1) + "] ? ");
+                a[i][j]=sc.nextInt();
+            }
+        }
+         
+        //print matrix a
+        System.out.println("Matrix a:");
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                System.out.print(a[i][j] + "\t");
+            }
+            System.out.print("\n");
+        }
+         
+         
+        //print matrix b
+        System.out.println("::: Transpose Matrix ::: ");
+        for(int i=0; i<col; i++){
+            for(int j=0; j<row; j++){
+                System.out.print(a[j][i] + "\t");
+            }
+            System.out.print("\n"); 
+        }
+         
+    }   
+}
+
+
+sum of n num
+=============
+import java.util.Scanner;
+class sum
+{
+	public static void main(String arg[])	
+	{
+                  int n,sum=0;
+                  
+                  Scanner sc=new Scanner(System.in);
+ 
+	    System.out.println("enter how many numbers you want sum");
+                   n=sc.nextInt();
+                   int a[]=new int[n]; 
+	    System.out.println("enter the "+n+" numbers ");
+                   for(int i=0;i<n;i++)
+                   {      
+	             System.out.println("enter  number  "+(i+1)+":");
+                           a[i]=sc.nextInt();
+                   }
+                   for(int i=0;i<n;i++)
+                   {
+                           sum+=a[i];
+                   }  	    
+                   System.out.println("sum of "+n+" numbers is ="+sum);                  
+              	}
+} 
+
+
+vowel or consonent
+=================
+import java.util.Scanner;
+class Char
+{
+	void findVowelOrNot(char ch)
+	{
+		if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')
+		{
+		System.out.println("Entered character "+ch+" is  Vowel"); 
+		}
+		else if((ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z'))
+			System.out.println("Entered character "+ch+" is Consonent");
+		      else
+			System.out.println("Not an alphabet");		
+	}
+	public static void main(String[ ] arg)
+	{
+		Char c=new Char();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter a character : ");
+		char in=sc.next( ).charAt(0);	 		
+		c.findVowelOrNot(in);
+	}
+}
+
+
+
+
+
+
+
+

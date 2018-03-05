@@ -1,0 +1,77 @@
+ EXECUTION OF A JAVA PROGRAM 
+===========================  
+
+=>Static loading:  A block of code would be loading into the RAM before it executed ( i.e after being loaded into the RAM it 		   may or may not get executed )
+
+=>Dynamic loading:  A block of code would be loaded into the RAM only when it is required to be executed.
+
+Note:  Static loading took place in the execution of structured programming languages. EX:  c- language
+
+*Java  follows Dynamic loading
+
+–     JVM would not convert all the statements of the class file into its executable code at a time.
+
+–     Once the control comes out from the method, then it is deleted from the RAM and another method of exe type will be loaded as required.
+
+–     Once the control comes out from the main ( ), the main ( ) method would also be deleted from the RAM. This is why we are not able to view the exe contents of a class file.
+
+Functions of JVM:
+=================
+
+-It converts the required part if the byte code into its equivalent executable code.
+-It loads the executable code into the RAM
+-Executes this code through local operating system
+-Deletes the executable code from the RAM
+-We know that JVM converts the class file into its equivalent executable code. Now if a JVM is in windows environment -executable code that is understood by windows environment only.
+
+Similarly, same in the case with unix  or other or thus JVM ID platform dependent.
+
+But the platform dependency of the JVM is not considered while saying Java is platform independent because JVM is supplied free of cost through the internet by the sun microsystems
+
+
+
+Platform independency :
+=======================
+Compiled code of a program should be executed in any operating system, irrespective of the as in OS in which that code had been generated. This concept is known as platform independency.
+
+=> The birth of oops concept took place with encapsulation.
+
+=> Any program contains two parts.
+
+Date part and Logic part
+
+Out of data and logics the highest priority us given to data.
+
+But in structured programming language the data insecurity is high.
+
+Thus in a process if securing data in structured prog. lang. the concept of encapsulation came into existence.
+
+Note :  In structured programming lang programs, the global variable play a vital role.
+
+But because of these global variables, there is data insecurity in the structured programming lang programs. i.e functions that are not related to some variables will have access to those variables and thus data may get corrupted. In this way data is unsecured.
+
+“This is what people say in general about data insecurity. But this is not the actual reason. The actual concept is as follows”.
+
+Let us assume that, we have a ‘C’ program with hundred functions. Assume that it is a project. Now if any upgradation is required, then the client i.e the user of this program (s/w) comes to the it company and asks the programmers to update it according to his requirement. Now we should note that, it is not guaranteed that the programmers who developed this program will still be working with that company. Hence this project falls into the hands of new programmers.
+
+Automatically it takes a lot of time to study. The project itself before upgrading it. It may not be surprising that the time required for writing the code to upgrade the project may be very less when compared to the time required for studying the project.
+
+Thus maintenance becomes a problem.
+
+If the new programmer adds a new function to the exiting code in the way of upgrading it, there is no guarantee that it will not affect the existing functions in the code. This is because of global variables. In this way data insecurity is created.
+
+To overcome this problem, programmers developed the concept of encapsulation.
+
+For example let us have a struc.prog.lang. program with ten global variables and twenty functions.
+
+It is sure that all the twenty functions will not use all the global variables.
+
+Three of the global variables may be used only by two functions. But in a structured prog. Lang like ‘C’ it is not possible to restrict  the access of global variables by some limited no of functions.
+
+Every function will have access to all the global variables.
+
+To avoid this problem, programmers have designed a way such that the variables and the functions which are  associated with or operate on those variable are enclosed in a block and that bock is called a class and that class and that class is given a name, Just as a function is given a name.
+
+Now the variables inside the block cannot be called as local variable because they cannot be called as global variables because they are confined to a block and not global.
+
+Hence these variables are known as instance variables
