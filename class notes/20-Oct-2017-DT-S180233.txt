@@ -1,0 +1,109 @@
+Javascript
+================
+
+- Java Script is scripting language basically used for specifying client side validation.
+
+- Java Script developed by netscape and it is open.
+
+- Java Script look like java.
+
+- We can implement various events using javascript also. It is a object based language.
+
+- We can add the javascript in head or in body.
+
+<script language="javascript">
+
+//code
+
+</script>
+
+Built in Functions
+================
+
+- There are lot of built in functions which are available in javascript
+
+1. alert()		2.prompt()	3.confirm()	4.parseInt()
+
+alert() Function
+================
+
+- This function is used for displaying a dialog box.
+
+Demo 1:
+============
+<html>
+<body>
+<script language="javascript">
+alert("This is Sample Dialog");
+</script>
+</body>
+</html>
+
+prompt() function
+===============
+
+- This function is used for creating dialog which can ask for the values from user.
+
+- This function can return a value which of variant type.
+
+<html>
+<body>
+<script language="javascript">
+var v=prompt("Enter the Value");
+alert("The value Entered:"+v);
+</script>
+</body>
+</html> 
+
+Javascript Variable
+=================
+- Javascript varaibles are of no type that is variant type.
+
+- To declare the variable 
+
+	var variable_name;
+
+- Here var is variant type and here we could store any kind of value.
+
+<html>
+<body>
+<script language="javascript">
+var v1=prompt("Enter the Value1");
+var v2=prompt("Enter the Value2");
+
+var n1=parseInt(v1);
+var n2=parseInt(v2);
+
+alert(n1+n2);
+
+</script>
+</body>
+</html>
+
+Confirm() Function
+================
+<html>
+<body>
+<script language="javascript">
+
+var v=confirm("Do You wish to Continue?");
+
+if(v)
+alert("success");
+else
+alert("stop");
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

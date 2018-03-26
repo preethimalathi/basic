@@ -1,0 +1,314 @@
+HttpServlet
+=============
+
+- This servlet is specific for the http protocol so generally browser sends the http request to the server.
+
+- Http have various doXXX() methods here XXX are the http methods.
+
+- If the client sends get type of request then doGet() method will be called.
+
+- If the client sends post type of request then doPost() method will be called.
+
+
+JSP
+================
+
+- Java Server Pages
+
+- These are the pages which will be executed at the server side and sends the http response to the client.
+
+- JSP page will look like an html page where we can embed the java code into it.
+
+- In JSP Page we can add the java code using scriplet.
+
+- There are some of the components of JSP are
+
+1. Directives
+
+	: These are content which will be added to the jsp page for different purposes
+
+	: There are three different directives which are available they are
+
+	1. page
+
+		: This is the important directive which contains the basic information.
+
+		: Syntax
+
+		<%@ page import="" contentType="text/html" %>
+
+	2. taglib
+
+		: This directive is used for adding the custom tags or JSTL (Java Standard Tag Library) to the jsp page.
+
+		<%@taglib uri=""  prefix=""%>
+
+	3. include 
+
+		: This directive is used for adding another jsp page output to this page.
+
+		<%@include file="file.jsp|file.html"%>
+
+Demo : Simple Html Page
+=====================
+index.html
+=============
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="MyHttpServletDemo" method="post">
+	<center>
+	<input type="submit" value="SUBMIT"/>
+	</center>
+</form>
+
+<a href="JSPDemo.jsp">JSP Demo</a>
+
+<a href="Home.jsp">Home</a>
+
+</body>
+</html>
+
+
+2. Scriplet
+
+	: These are used for adding the java code into the jsp page
+
+	: There are three different scriplets generally we can use they are
+
+	1. Normal Scriplet
+
+		<%   java code  %>
+
+	2. Declaration Scriplet
+
+		<%! java code %>
+
+	3. Expression Scriplet
+
+		<%= java code %>
+
+Demo : Scriplet Demo
+==================
+<%@ page language="java" import="java.sql.*" contentType="text/html"%>
+<html>
+<head>
+<title>Scriplet Demo - JSP</title>
+</head>
+<body>
+
+<h2 align="center">Scriplet Demo</h2>
+
+<h3>Declaration Scriplet</h3>
+<%!
+	Connection conn;
+	Statement statement;
+	ResultSet resultSet;
+%>
+
+<h3>Normal Scriplet</h3>
+<%
+	java.util.Date today=new java.util.Date();
+	out.println("Today:"+today);
+%>
+
+<h3>Expression Scriplet</h3>
+
+The Result of (10+20) : <%=(10+20)%>
+
+</body>
+</html>
+
+3. Action Tags
+
+4. Custom Tags 
+
+
+Include Directive
+===================
+
+- This directive is used when we want to add the output of any html or jsp page to our page.
+
+Demo : Implementing include directive
+===================================
+Header.jsp
+==========
+<%@ page language="java" contentType="text/html"%>
+<html>
+<head>
+<title>Header Page</title>
+</head>
+<body>
+
+<table width="100%" align="center">
+	<tr bgcolor="blue">
+		<td>Image Logo</td>
+		<td> 
+			<h2>Blue Sky Inc.</h2>
+			<h4>Innovation Happens</h4>
+		</td>
+	</tr>
+	<tr bgcolor="pink">
+		<td colspan="2">	
+			<a href="Home.jsp">Home</a>
+			<a href="Login.jsp">Login</a>
+			<a href="Register.jsp">Register</a>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>
+
+Home.jsp
+============
+<%@ page language="java" contentType="text/html"%>
+<html>
+<head>
+<title>Header Page</title>
+</head>
+<body>
+
+<%@include file="Header.jsp"%>
+
+<h2 align="center"> This is the Home Page.</h2>
+
+</body>
+</html>
+
+Login.jsp
+============
+<%@ page language="java" contentType="text/html"%>
+<html>
+<head>
+<title>Header Page</title>
+</head>
+<body>
+
+<%@include file="Header.jsp"%>
+
+<form action="Login" method="post">
+
+<table align="center">
+<thead bgcolor="pink">
+	<td colspan="2"> <center>Login Here</center></td>
+</thead>
+<tr>
+<td>User Name </td><td><input type="text" name="username"/></td>
+</tr>
+<tr>
+<td>Password</td><td> <input type="password" name="passwd"/></td>
+</tr>
+<tr>
+<tr bgcolor="gray">
+<td colspan="2" >
+<center>
+<input type="submit" value="SUBMIT"/>
+<input type="reset" value="RESET"/>
+</center>
+</td></tr>
+</table>
+
+</form>
+
+</body>
+</html>
+
+Register.jsp
+==============
+<%@ page language="java" contentType="text/html"%>
+<html>
+<head>
+<title>Header Page</title>
+</head>
+<body>
+
+<%@include file="Header.jsp"%>
+
+<form action="Register" method="post">
+<table align="center">
+<thead bgcolor="pink">
+	<td colspan="2"> <center>SignUp Here</center></td>
+</thead>
+<tr>
+<td>User Name </td><td><input type="text" name="username"/></td>
+</tr>
+<tr>
+<td>Password</td><td> <input type="password" name="passwd"/></td>
+</tr>
+<tr>
+<td>Customer Name</td><td> <input type="text" name="custname"/></td>
+</tr>
+<tr>
+<td>Gender</td><td><input type="radio" name="gender" value="M"/>Male<input type="radio" name="gender" value="F"/>Female</td>
+</tr>
+<tr>
+<td>Address</td>
+<td><textarea name="addr" rows="6" cols="20"/></textarea></td>
+</tr>
+<tr bgcolor="gray">
+<td colspan="2" >
+<center>
+<input type="submit" value="SUBMIT"/>
+<input type="reset" value="RESET"/>
+</center>
+</td></tr>
+</table>
+</form>
+
+</body>
+</html>
+
+
+
+
+MVC
+=================
+
+- Model View Controller 
+
+- It is design pattern
+
+- Design pattern are implemented basically to the application for performance and reusability.
+
+- These are the proven pattern which we can apply to any application irrespective of any technology.
+
+- In MVC Design pattern each component description.
+
+1. View 
+	: This component is generally used for end user how the data is displaying
+
+	: Either jsp or the html pages are responsible to create view page.
+
+2. Model 
+	: This component is used basically to connect with the database and contain business 	logic.
+
+	: A POJO (Plain Old Java Object) can act as a model.
+
+3. Controller 
+
+	: This component works as proxy between the model and the view component.
+
+	: Servlet will act as a controller component in MVC.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

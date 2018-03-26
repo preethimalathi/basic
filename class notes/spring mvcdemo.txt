@@ -1,0 +1,124 @@
+1. Create Maven Webapp "springmvcdemo"
+
+2. Add server runtime to the build path
+
+3.In pom.xml file add the dependency
+
+ <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>4.3.8.RELEASE</version>
+    </dependency>
+
+4. web.xml file
+
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  <servlet-name>dispatcher</servlet-name>
+  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>dispatcher</servlet-name>
+  <url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>
+
+
+5. Right click on WEB-INF and create a xml file "dispatcher-servlet.xml"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+       <!-- To enable spring web mvc  -->
+       <mvc:annotation-driven></mvc:annotation-driven>
+       
+       <!--  to scan all the classes annotated with @Controller, @Service, @Repository, @Autowired -->
+       <!--  similar @Component-scan(basePackages="com.niit") -->
+       <context:component-scan base-package="com.niit"></context:component-scan>
+       
+       <!--  to convert logical view name to actual view name -->
+       <!-- logical view name is 'home' -->
+       <!-- /WEB-INF/views/home.jsp -->
+       <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+       <property name="prefix" value="/WEB-INF/views/"></property>
+       <property name="suffix" value=".jsp"></property>
+       </bean>
+</beans>
+
+
+5. In src/main/java, create a package "com.niit.controller" and create a class "HomeController"
+
+package com.niit.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class HomeController {
+public HomeController(){
+	System.out.println("HelloController GETS INTANTIATED");
+}
+@RequestMapping(value="/hello")
+public ModelAndView helloPage(){
+	//hello  : logical view name
+	//message : model attribute
+	//Hello World : model [data]
+	//message="Hello World"
+	return new ModelAndView("hello","message","Hello World");
+}
+@RequestMapping(value="/home")
+public ModelAndView homePage(){
+	//  WEB-INF/views/home.jsp  [InternalResourceViewResolver Bean]
+	return new ModelAndView("home","welcome","Welcome to home page");
+}
+}
+
+
+6. In WEB-INF, create a folder "views" and create two jsp pages
+
+home.jsp, hello.jsp
+
+hello.jsp
+-----------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page isELIgnored="false" %>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+${message }
+</body>
+</html>
+
+home.jsp
+--------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page isELIgnored="false" %>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+${welcome }
+</body>
+</html>

@@ -1,0 +1,355 @@
+Packages
+===========
+- Packages are the containers where relevant classes and interfaces are there.
+
+- The packages can be used in another class by importing them.
+
+To create a Package Syntax
+=======================
+package package_name;
+
+Example
+==========
+
+package pack1;
+
+Using the Package
+===================
+
+To use the package there are two different ways
+
+	1. importing the package by using import keyword.
+
+	2. Fully qualified class name.
+
+
+Demo : Creating a Class with in a Package
+================================
+package com;
+
+public class Demo 
+{
+	private int x;
+	int y;
+	protected int z;
+	public int a;
+	
+	public Demo()
+	{
+		x=10;
+		y=20;
+		z=30;
+		a=40;
+	}
+	
+	public void display()
+	{
+		System.out.println("Hello-I am in Package");
+	}
+	
+}
+
+Demo : Creating a class for Using the Package
+===================================
+import com.*;
+public class UsePackage 
+{
+	public static void main(String arg[])
+	{
+		Demo demo=new Demo();
+		
+		demo.display();
+	}
+}
+
+
+or - Using Fully Qualified Class Name
+
+public class UsePackage 
+{
+	public static void main(String arg[])
+	{
+		com.Demo demo=new com.Demo();
+		
+		demo.display();
+	}
+}
+
+
+Demo : Creating a class outside the Package which is Not inherited 
+===================================================
+import com.*;
+public class UsePackage 
+{
+	Demo demo=new Demo();
+	
+	public UsePackage()
+	{
+		//demo.x=10; //Error as x is private
+		//demo.y=20; //Error as y is package scope
+		//demo.z=20; //Error as z is protected scope
+		demo.a=10; //Accessible as it is public
+	}
+	public static void main(String arg[])
+	{
+	
+	}
+}
+
+Demo : Outside Package inherited the Class
+===================================
+import com.*;
+public class UsePackage extends Demo
+{
+	
+	public UsePackage()
+	{
+		//x=10; //Error as x is private
+		//y=20; //Error as y is package scope
+		z=20; //Accessible as it is protected
+		a=10; //Accessible as it is public
+	}
+	public static void main(String arg[])
+	{
+	
+	}
+}
+
+
+- Built in Packages of Java
+==========================
+
+- Java has provided number of packages which we can use for different purposes.
+
+- Some of the packages which we use they are
+
+1. java.lang
+
+	: This package is the default package for java and this package every class automatically imported.
+
+	: Some of the classes which we can find in java.lang package they are
+
+	1. Object		2.String		3.Runtime	4.Class
+
+	5. Throwable	6.Exception	7.Thread		8.System
+
+	: Some of the interfaces which are in java.lang package
+
+	1. Runnable	2.Comparable	
+
+Object
+============
+	- It is the root class hierarchy for all the java classes.
+
+	- Even if your class is not derived from any class then it means it is derived from Object class.
+
+toString() method
+===============
+public class Employee 
+{
+	String empid,empname;
+	int salary;
+	
+	public Employee(String empid,String empname,int salary)
+	{
+		this.empid=empid;
+		this.empname=empname;
+		this.salary=salary;
+	}
+	
+	public static void main(String arg[])
+	{
+		Employee employee=new Employee("E1001","Suresh",9000);
+		
+		System.out.println(employee);
+	}
+}
+
+
+-Bydefault any class object when we try to print then it will display in the below format
+
+ClassName@Hashcode
+
+- This hashcode is not any address of the object it is the unique value to the object assigned by the JVM.
+
+- When we print object of a class then automatically the toString() method of the object class is called and it is printing ClassName@HashCode.
+
+- So if we want to our object when it is printed it should display its member values instead of classname@hashcode then we need to override the toString() method.
+
+
+public class Employee 
+{
+	String empid,empname;
+	int salary;
+	
+	public Employee(String empid,String empname,int salary)
+	{
+		this.empid=empid;
+		this.empname=empname;
+		this.salary=salary;
+	}
+	
+	public String toString()
+	{
+		return "Employee ID:"+empid+"\nEmployee Name:"+empname+"\nSalary:"+salary;
+	}
+	
+	public static void main(String arg[])
+	{
+		Employee employee=new Employee("E1001","Suresh",9000);
+		
+		System.out.println(employee);
+	}
+}
+
+
+2. java.util
+
+	- As package name says it is a utility package which contains various classes for different utitlity.
+
+	- Some of the classes which are in this package
+
+	1. Date 		2.ArrayList	3.Vector		4.LinkedList
+
+	5. HashSet	6.TreeSet		
+
+	- Some of the interfaces which are in this package
+
+	1.Comparator	2.Collection	3.List		4.Set
+
+3. java.io
+
+	- This package is used for input and output operation 
+
+	- Some of the classes 
+
+	1. InputStream	2.OutputStream	3.Reader		4.Writer
+
+	- Some of the Interfaces
+
+	1.Serializable
+
+4. java.sql 
+
+	- This package is used for accessing or manipulating the database
+
+	- Some of the Classes
+
+	1. DriverManager
+
+	- Some of the Interfaces
+
+	1. Connection		2.Statement		3.ResultSet
+
+	4. ResultSetMetaData	
+
+
+Collection
+===============
+- A collection is a group of objects which are arranged in a logical fashion.
+
+- A collection is also a java datastructure.
+
+- In Java we have been provided number of classes and interfaces to implement Collection.
+
+What we can do with Collection?
+=========================
+- We can add the element to the Collection
+
+- We can delete the element from the Collection
+
+- Can Update the element of a collection
+
+- Display elements of the Collection
+
+Array
+==============
+
+- Array is a group of homogeneous type of elements.
+
+- Each array element will have an index and this index will start from 0.
+
+To define an array
+====================
+
+dataType array_name[]=new dataType[size];
+
+int marks[]=new int[5];
+
+String student_name[]=new String[5];
+
+Demo : Implementing a Simple Array
+============================
+
+import java.util.Scanner;
+
+public class ArrayDemo 
+{
+	public static void main(String arg[])
+	{
+		int marks[]=new int[5];
+		
+		Scanner scanner=new Scanner(System.in);
+		
+		for(int i=0;i<marks.length;i++)
+		{
+			System.out.println("Enter Array Element:"+(i+1));
+			marks[i]=scanner.nextInt();
+		}
+		
+		for(int i=0;i<marks.length;i++)
+		{
+			System.out.println(marks[i]);
+		}
+	}
+}
+
+Disadvantages of Array
+===================
+- In case of array the size is static once the size has specified then later at the runtime we can't change the size.
+
+- We can't also reduce the size by deleting element.
+
+- Hence we need to implement the Collection.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

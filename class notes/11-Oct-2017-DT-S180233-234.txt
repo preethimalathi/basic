@@ -1,0 +1,240 @@
+-List can't sort the data automatically so we sort the list elements by using Collections.sort() method.
+
+- TreeSet can sort the data provide the element which we are adding to the TreeSet collection need to implement Comparable interface.
+
+Map Collection
+==============
+
+- This collection is not from the Collection interface hierarchy.
+
+- This type of collection will store the data in key and value pair wise.
+
+- The super interface for all these type of collection is Map which is in java.util package.
+
+- Some of the classes which are implemented Map interface they are
+
+	1. HashMap		2.LinkedHashMap		3.TreeMap
+
+
+Demo : Implementing HashMap
+==========================
+import java.util.*;
+public class MapDemo 
+{
+	public static void main(String arg[])
+	{
+		HashMap<Integer,Employee> hashMap=new HashMap<Integer,Employee>();
+		
+		hashMap.put(1001,new Employee(1001,"Suresh",28000));
+		hashMap.put(1002, new Employee(1002,"Vinod",23000));
+		hashMap.put(1003, new Employee(1003,"Kiran",11000));
+		
+		//Retrieve all the keys
+		
+		Set<Integer> allKeys=hashMap.keySet();
+		
+		for(Integer empId:allKeys)
+		{
+			System.out.println(hashMap.get(empId));
+		}
+		
+		
+	}
+}
+
+String
+=============
+- String is a class in java which is java.lang package.
+
+- A string is nothing but a set of characters.
+
+- String class has various methods by which we can manipulate Strings.
+
+Demo : Implementing Basic String Constructor and Function
+============================================
+
+public class BasicStringDemo 
+{
+	public static void main(String arg[])
+	{
+		String str="Suresh";
+		
+		//Here "Suresh" is object
+		//Here "Suresh" => new String("Suresh");
+		//String literal itself an object
+		
+		System.out.println("Vijay".length());
+		
+		char name[]={'S','u','d','h','i','r'};
+		String myString1=new String(name); 
+		System.out.println("Using Char Array"+myString1);
+		
+		byte buff[]= {65,66,67,68};
+		String myString2=new String(buff);
+		System.out.println("Using Byte Array:"+myString2);
+		
+		String str1="Happy Diwali";
+		
+		System.out.println(str1.toUpperCase());
+		System.out.println(str1.toLowerCase());
+		
+		String record="E1001,Suresh,20000";
+		String eachValue[]=record.split(",");
+		
+		System.out.println("Employee ID:"+eachValue[0]);
+		System.out.println("Employee Name:"+eachValue[1]);
+		System.out.println("Employee Salary:"+eachValue[2]);
+	}
+}
+
+
+Demo 2:
+=================
+
+public class StringIDInc 
+{
+	public static void main(String arg[])
+	{
+		String empid="E1001";
+		System.out.println("Before Incrementation:"+empid);
+		String empid1=empid.substring(1);
+		int myId=Integer.parseInt(empid1);
+		myId=myId+1;
+		empid="E"+String.valueOf(myId);
+		System.out.println("New ID:"+empid);
+	}
+}
+
+
+Demo 3:
+===========
+
+public class StringIDInc 
+{
+	public static void main(String arg[])
+	{
+		String empid="E1001";
+		System.out.println("Before Incrementation:"+empid);
+		empid="E"+String.valueOf(Integer.parseInt(empid.substring(1))+1);
+		System.out.println("New ID:"+empid);
+	}
+}
+
+Immutable and Mutable String
+==========================
+
+- Bydefault String is immutable. It means String object value can't be changed.
+
+
+public class ImmutableString 
+{
+	public static void main(String arg[])
+	{
+		
+		String str="Welcome";
+		str.concat(" Suresh");
+		System.out.println(str); //Welcome
+		
+		String str1="Welcome";
+		str1=str1.concat(" Suresh");
+		System.out.println(str1); //Welcome Suresh
+		
+	}
+}
+
+- So to implement mutable string java has provided two different classes they are
+	
+	1. StringBuffer			2.StringBuilder
+
+
+public class MutableString 
+{
+	public static void main(String arg[])
+	{
+		StringBuffer stringBuffer1=new StringBuffer();
+		stringBuffer1.append("Hello");
+		stringBuffer1.append(" Suresh");
+		System.out.println(stringBuffer1);
+		
+		StringBuilder stringBuilder=new StringBuilder();
+		stringBuilder.append("Hello");
+		stringBuilder.append(" Kiran");
+		System.out.println(stringBuilder);		
+	}
+}
+
+
+
+
+Regular Expression
+====================
+
+- Regular expressions are used to search a String pattern in huge String.
+
+- Like in a document to find all the number based words or string those who are starts with s and ends with K.
+
+-To implement the regular expression we need to use the two major classes they are Pattern and Matcher.
+
+- These two classes are available in java.util.regex package.
+
+import java.util.regex.*;
+public class RegExpDemo1 
+{
+	public static void main(String arg[])
+	{
+		
+		String target_string="Long long ago we have a King";
+		
+		Pattern pattern=Pattern.compile("long");
+		
+		Matcher matcher=pattern.matcher(target_string);
+
+		if(matcher.find())
+			System.out.println("Pattern Found");
+		else
+			System.out.println("Pattern Not Found");
+		
+	}
+}
+
+
+Next Class - 12-Oct-2017
+=====================================
+Exception Handling
+=====================================
+Next Class - 13-Oct-2017
+======================================
+File IO
+=======================================
+Next Class - 14-Oct-2017
+======================================
+JDBC
+======================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

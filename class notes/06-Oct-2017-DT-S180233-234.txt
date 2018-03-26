@@ -1,0 +1,305 @@
+Final Keyword
+==================
+
+Final Variable
+==============
+
+- Final variable will be act as a constant.
+
+- Normally final variable need to be initialized during the declartion time itself.
+
+final int var1=90;
+
+- Convention is final variable need to be in capital letter.
+
+final double PI=3.141;
+
+Demo : Declaring the final and Initialization
+====================================
+public class FinalDemo 
+{
+	final double PI;
+	
+	public FinalDemo()
+	{
+		PI=3.141;
+	}
+}
+
+or
+
+public class FinalDemo 
+{
+	final double PI=3.141;
+}
+
+
+Final Method
+=================
+
+- Final method can't be overriden. These methods are concrete to that particular class.
+
+- To declare a method as final then we can use the following syntax
+
+Access_Specifier final returnType methodName([Parameters])
+{
+//code goes
+}
+
+public final double calcCircleArea(double radius)
+{
+
+}
+
+Demo : Writing the Final Method
+============================
+
+public class FinalDemo 
+{
+	final double PI;
+	
+	public FinalDemo()
+	{
+		PI=3.141;
+	}
+	
+	public final double calcCircleArea(double radius)
+	{
+		double area;
+		area=PI*radius*radius;
+		return area;
+	}
+}
+
+
+Final Class
+================
+
+- This type of class can't be inherited to the other class.
+
+- Though final class can't be inherited but we can use the final class by creating its object.
+
+
+public final class FinalDemo 
+{
+	final double PI;
+	
+	public FinalDemo()
+	{
+		PI=3.141;
+	}
+	
+	public final double calcCircleArea(double radius)
+	{
+		double area;
+		area=PI*radius*radius;
+		return area;
+	}
+}
+
+
+public class FinalDemo2 //extends FinalDemo 
+{
+	public static void main(String arg[])
+	{
+		FinalDemo finalDemo=new FinalDemo();
+		
+		System.out.println("Area :"+finalDemo.calcCircleArea(7));
+	}
+
+}
+
+Interface
+==============
+
+- Interface are 100% abstract class.
+
+- All the methods of the interface are bydefault public and abstract.
+
+- Interface can contain variables which are bydefault static and final.
+
+Syntax
+=========
+
+interface InterfaceName
+{
+	dataType variableName1=value1;
+	dataType variableName2=varlue2;
+	.....
+	....
+	returnType methodName1([Parameters]);
+	returnType methodName2([Parameters]);
+	.....
+	.....
+}
+
+Example of Interface
+========================
+public interface ICallBack 
+{
+	int callBack(int v);
+}
+
+Implementing Interface to Class
+==========================
+
+- An interface will implement to a class.
+
+Syntax
+==========
+
+class ClassName [extends SuperClassName] implements InterfaceName
+{
+//code goes here
+}
+
+- All the methods which are in interface need to be overriden by the implemented class other wise the class will be declared as abstract.
+
+- A class can extend a single class only but where as a class can implement multiple interfaces.
+
+class Classname implements InterfaceName1,InterfaceName2...
+{
+//code goes here
+}
+
+Demo : Implementing Interface to a Class
+=================================
+public class UseICallBack implements ICallBack 
+{
+
+	@Override
+	public int callBack(int v) 
+	{
+		System.out.println("Overriden Method from Interface");
+		return v*v;
+	}
+	
+	public static void main(String arg[])
+	{
+		UseICallBack useICallBack=new UseICallBack();
+		
+		System.out.println(useICallBack.callBack(100));
+	}
+
+}
+
+Interface can extend Interfaces
+============================
+
+- Java will not support multiple inheritance using class it means a class can't extend multiple classes.
+
+- Java support multiple inheritance using interface.
+
+Syntax for extending interface
+=========================
+
+interface InterfaceName extends Interface1,Interface2,....
+{
+
+}
+
+- A class which has implementing the interface which has already extended multiple interfaces then the class has to override all the methods of the interface and its super interfaces.
+
+
+public interface Addition 
+{
+	int add(int v1,int v2);
+}
+
+public interface Multiplication 
+{
+	int multiply(int v1,int v2);
+}
+
+public interface Calculator extends Addition, Multiplication 
+{
+	void display();
+}
+
+public class UseCalculator implements Calculator 
+{
+
+	@Override
+	public int add(int v1, int v2) 
+	{
+		return v1+v2;
+	}
+
+	@Override
+	public int multiply(int v1, int v2) 
+	{
+		return v1*v2;
+	}
+
+	@Override
+	public void display() 
+	{
+		System.out.println("Addition Result:"+this.add(10,20));
+		System.out.println("Multiplication Result:"+this.multiply(10, 10));
+	}
+	
+	public static void main(String arg[])
+	{
+		UseCalculator useCalculator=new UseCalculator();
+		useCalculator.display();
+	}
+
+}
+
+Interface Variables
+===================
+
+- Interface can contain variables which are bydefault static and final.
+
+public interface SharedConstant 
+{
+	int LEFT=1;
+}
+
+
+public class UseSharedConstant implements SharedConstant
+{
+	public static void main(String arg[])
+	{
+		System.out.println("Left Value:"+LEFT);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

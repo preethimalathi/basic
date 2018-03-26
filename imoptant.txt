@@ -1,0 +1,493 @@
+public class FindLargestSmallestNumber {
+ largest and smallest number
+=============================
+        public static void main(String[] args) {
+               
+                //array of 10 numbers
+                int numbers[] = new int[]{32,43,53,54,32,65,63,98,43,23};
+               
+                //assign first element of an array to largest and smallest
+                int smallest = numbers[0];
+                int largetst = numbers[0];
+               
+                for(int i=1; i< numbers.length; i++)
+                {
+                        if(numbers[i] > largetst)
+                                largetst = numbers[i];
+                        else if (numbers[i] < smallest)
+                                smallest = numbers[i];
+                       
+                }
+               
+                System.out.println("Largest Number is : " + largetst);
+                System.out.println("Smallest Number is : " + smallest);
+        }
+}
+
+NUMBER OF WORDS IN THE STRING
+============================
+
+public class WordCount
+{ 
+	public static void main(String args[])
+	{ 
+		String s = "welcome to candid java tutorial";
+ 
+		int count = 1;
+ 
+		for (int i = 0; i < s.length() - 1; i++)
+		{
+			if ((s.charAt(i) == ' ') && (s.charAt(i + 1) != ' '))
+			{
+				count++;
+ 
+			}
+		}
+ 		System.out.println("Number of words in a string = " + count);
+	}
+}
+
+ PRIME NO
+==========
+class PrimeExample{  
+ public static void main(String args[]){  
+  int i,m=0,flag=0;    
+  int n=17;//it is the number to be checked  
+  m=n/2;    
+  for(i=2;i<=m;i++){    
+   if(n%i==0){    
+   System.out.println("Number is not prime");    
+   flag=1;    
+   break;    
+   }    
+  }    
+  if(flag==0)    
+  System.out.println("Number is prime");    
+}  
+}  
+
+FACTORIAL
+=========
+class FactorialExample{  
+ public static void main(String args[]){  
+  int i,fact=1;  
+  int number=5;//It is the number to calculate factorial    
+  for(i=1;i<=number;i++){    
+      fact=fact*i;    
+  }    
+  System.out.println("Factorial of "+number+" is: "+fact);    
+ }  
+}  
+
+ARMSTRONG
+=========
+class ArmstrongExample{  
+  public static void main(String[] args)  {  
+    int c=0,a,temp;  
+    int n=153;//It is the number to check armstrong  
+    temp=n;  
+    while(n>0)  
+    {  
+    a=n%10;  
+    n=n/10;  
+    c=c+(a*a*a);  
+    }  
+    if(temp==c)  
+    System.out.println("armstrong number");   
+    else  
+        System.out.println("Not armstrong number");   
+   }  
+}  
+
+INHERITANCE
+===========
+class Animal{  
+void eat(){System.out.println("eating...");}  
+}  
+class Dog extends Animal{  
+void bark(){System.out.println("barking...");}  
+}  
+class TestInheritance{  
+public static void main(String args[]){  
+Dog d=new Dog();  
+d.bark();  
+d.eat();  
+}}  
+nheritance in java is a mechanism in which one object acquires all the properties and behaviors of parent object.
+
+The idea behind inheritance in java is that you can create new classes that are built upon existing classes. When you inherit from an existing class, you can reuse methods and fields of parent class, and you can add new methods and fields also.
+
+Inheritance represents the IS-A relationship, also known as parent-child relationship.
+
+Why use inheritance in java
+
+For Method Overriding (so runtime polymorphism can be achieved).
+For Code Reusability.
+
+INSERTING A NUMBER IN A GIVEN POSITION
+======================================
+import java.util.Scanner;
+
+public class JavaProgram
+{
+   public static void main(String args[])
+   {
+       int size, insert, i, pos;
+       int arr[] = new int[50];
+       Scanner scan = new Scanner(System.in);
+	   
+       System.out.print("Enter Array Size : ");
+       size = scan.nextInt();
+	   
+       System.out.print("Enter Array Elements : ");
+       for(i=0; i<size; i++)
+       {
+           arr[i] = scan.nextInt();
+       }
+	   
+       System.out.print("Enter Element to be Insert : ");
+       insert = scan.nextInt();
+       System.out.print("At Which Position ? (Enter Index Number ) : ");
+       pos = scan.nextInt();
+       
+       // now create a space at the required position
+       
+       for(i=size; i>pos; i--)
+       {
+           arr[i] = arr[i-1];
+       }
+	   
+       arr[pos] = insert;
+	   
+       System.out.print("Element inserted Successfully..!!\n");
+	   
+       System.out.print("Now the New Array is :\n");
+       for(i=0; i<size+1; i++)
+       {
+           System.out.print(arr[i]+ " ");
+       }
+   }
+}
+PROGRAM TO COMBINE TWO STRINGS
+==============================
+import java.util.Scanner;
+
+public class JavaProgram
+{
+   public static void main(String args[])
+   {
+      String str1, str2;
+      Scanner scan = new Scanner(System.in);
+ 
+      System.out.print("Enter First String : ");
+      str1 = scan.nextLine();
+      System.out.print("Enter Second String : ");
+      str2 = scan.nextLine();
+      
+      System.out.print("Concatenating String 2 into String 1...\n");
+      str1 = str1.concat(str2);
+	  
+      System.out.print("String 1 after Concatenation is " +str1);
+   }
+}
+
+RUNTIME POLYMORPHISM
+====================
+Polymorphism is the capability of an action or method to do different things based on the object that it is acting upon. In other words, polymorphism allows you define one interface and have multiple implementation. This is one of the basic principles of object oriented programming.
+
+The method overriding is an example of runtime polymorphism. You can have a method in subclass overrides the method in its super classes with the same name and signature. Java virtual machine determines the proper method to call at the runtime, not at the compile time.
+
+Let's take a look at the following example:
+
+class Animal {
+  void whoAmI() {
+    System.out.println("I am a generic Animal.");
+  }
+}
+class Dog extends Animal {
+  void whoAmI() {
+    System.out.println("I am a Dog.");
+  }
+}
+class Cow extends Animal {
+  void whoAmI() {
+    System.out.println("I am a Cow.");
+  }
+}
+class Snake extends Animal {
+  void whoAmI() {
+    System.out.println("I am a Snake.");
+  }
+}
+
+class RuntimePolymorphismDemo {
+
+  public static void main(String[] args) {
+    Animal ref1 = new Animal();
+    Animal ref2 = new Dog();
+    Animal ref3 = new Cow();
+    Animal ref4 = new Snake();
+    ref1.whoAmI();
+    ref2.whoAmI();
+    ref3.whoAmI();
+    ref4.whoAmI();
+  }
+}
+COMPILE TIME
+============
+In this article we are going to learn about compile time polymorphism in java. An example of polymorphism is method overloading. i.e. the same method name can be used for multiple purposes. compile time polymorphism can be achieved using method overloading. The rules are as follows.
+
+Overloaded methods must have different argument list
+May have different return types if argument list is different.
+May throw different exceptions
+May have different access modifiers
+
+class ClassMain{
+	void disp(int number){
+		System.out.println ("method:" + number);
+	}
+	void disp(int number1, int number2){
+		System.out.println ("method:" + number1 + "," + number2);
+	}
+	double disp(double number) {
+		System.out.println("method:" + number);
+		return num;
+	}
+}
+
+class CompileTimePolymorphismDemo
+{
+   public static void main (String args [])
+   {
+       ClassMain obj = new ClassMain();
+       double result;
+       obj.disp(40);
+       obj.disp(50, 30);
+       result = obj.disp(5.1);
+       System.out.println("Answer is:" + result);
+   }
+}
+ARRAY LIST
+=========
+import java.util.*;
+
+public class ArrayListExample {
+   public static void main(String args[]) {
+      /*Creation of ArrayList: I'm going to add String
+       *elements so I made it of string type */
+	  ArrayList<String> obj = new ArrayList<String>();
+
+	  /*This is how elements should be added to the array list*/
+	  obj.add("Ajeet");
+	  obj.add("Harry");
+	  obj.add("Chaitanya");
+	  obj.add("Steve");
+	  obj.add("Anuj");
+
+	  /* Displaying array list elements */
+	  System.out.println("Currently the array list has following elements:"+obj);
+
+	  /*Add element at the given index*/
+	  obj.add(0, "Rahul");
+	  obj.add(1, "Justin");
+
+	  /*Remove elements from array list like this*/
+	  obj.remove("Chaitanya");
+	  obj.remove("Harry");
+
+	  System.out.println("Current array list is:"+obj);
+
+	  /*Remove element from the given index*/
+	  obj.remove(1);
+
+	  System.out.println("Current array list is:"+obj);
+   }
+}
+
+ArrayList is a part of collection framework and is present in java.util package. It provides us dynamic arrays in Java. Though, it may be slower than standard arrays but can be helpful in programs where lots of manipulation in the array is needed.
+
+ArrayList inherits AbstractList class and implements List interface.
+ArrayList is initialized by a size, however the size can increase if collection grows or shrunk if objects are removed from the collection.
+Java ArrayList allows us to randomly access the list.
+ArrayList can not be used for primitive types, like int, char, etc. We need a wrapper class for such cases (see this for details).
+ArrayList in Java can be seen as similar to vector in C++.
+Let us look at the code to create generic ArrayList-
+
+HASH map
+==========
+import java.util.*;  
+class TestCollection13{  
+ public static void main(String args[]){  
+  HashMap<Integer,String> hm=new HashMap<Integer,String>();  
+  hm.put(100,"Amit");  
+  hm.put(101,"Vijay");  
+  hm.put(102,"Rahul");  
+  for(Map.Entry m:hm.entrySet()){  
+   System.out.println(m.getKey()+" "+m.getValue());  
+  }  
+ }  
+}  
+Java HashMap class implements the map interface by using a hashtable. It inherits AbstractMap class and implements Map interface.
+
+The important points about Java HashMap class are:
+
+A HashMap contains values based on the key.
+It contains only unique elements.
+It may have one null key and multiple null values.
+It maintains no order.
+
+HASHSET
+=======
+import java.util.*;  
+class TestCollection9{  
+ public static void main(String args[]){  
+  //Creating HashSet and adding elements  
+  HashSet<String> set=new HashSet<String>();  
+  set.add("Ravi");  
+  set.add("Vijay");  
+  set.add("Ravi");  
+  set.add("Ajay");  
+  //Traversing elements  
+  Iterator<String> itr=set.iterator();  
+  while(itr.hasNext()){  
+   System.out.println(itr.next());  
+  }  
+ }  
+}  
+HashSet extends AbstractSet and implements the Set interface. It creates a collection that uses a hash table for storage.
+
+A hash table stores information by using a mechanism called hashing. In hashing, the informational content of a key is used to determine a unique value, called its hash code.
+
+The hash code is then used as the index at which the data associated with the key is stored. The transformation of the key into its hash code is performed automatically.
+
+Following is the list of constructors provided by the HashSet clas
+
+LINEAR SEARCH
+============
+import java.util.Scanner;
+ 
+class LinearSearch 
+{
+  public static void main(String args[])
+  {
+    int c, n, search, array[];
+ 
+    Scanner in = new Scanner(System.in);
+    System.out.println("Enter number of elements");
+    n = in.nextInt(); 
+    array = new int[n];
+ 
+    System.out.println("Enter " + n + " integers");
+ 
+    for (c = 0; c < n; c++)
+      array[c] = in.nextInt();
+ 
+    System.out.println("Enter value to find");
+    search = in.nextInt();
+ 
+    for (c = 0; c < n; c++)
+    {
+      if (array[c] == search)     /* Searching element is present */
+      {
+         System.out.println(search + " is present at location " + (c + 1) + ".");
+          break;
+      }
+   }
+   if (c == n)  /* Searching element is absent */
+      System.out.println(search + " is not present in array.");
+  }
+}
+
+Java program for linear search: Linear search is very simple, To check if an element is present in the given list we compare search element with every element in the list. If the number is found then success occurs otherwise the list doesn't contain the element we are searching.
+
+BINARY SEARCH
+============
+import java.util.Scanner;
+ 
+class BinarySearch 
+{
+  public static void main(String args[])
+  {
+    int c, first, last, middle, n, search, array[];
+ 
+    Scanner in = new Scanner(System.in);
+    System.out.println("Enter number of elements");
+    n = in.nextInt(); 
+    array = new int[n];
+ 
+    System.out.println("Enter " + n + " integers");
+ 
+ 
+    for (c = 0; c < n; c++)
+      array[c] = in.nextInt();
+ 
+    System.out.println("Enter value to find");
+    search = in.nextInt();
+ 
+    first  = 0;
+    last   = n - 1;
+    middle = (first + last)/2;
+ 
+    while( first <= last )
+    {
+      if ( array[middle] < search )
+        first = middle + 1;    
+      else if ( array[middle] == search ) 
+      {
+        System.out.println(search + " found at location " + (middle + 1) + ".");
+        break;
+      }
+      else
+         last = middle - 1;
+ 
+      middle = (first + last)/2;
+   }
+   if ( first > last )
+      System.out.println(search + " is not present in the list.\n");
+  }
+}
+
+Java program for binary search: This code implements binary search algorithm. Please note input numbers must be in ascending order.
+
+COMPARE TWO STRINGS
+===================
+class Teststringcomparison1{  
+ public static void main(String args[]){  
+   String s1="Sachin";  
+   String s2="Sachin";  
+   String s3=new String("Sachin");  
+   String s4="Saurav";  
+   System.out.println(s1.equals(s2));//true  
+   System.out.println(s1.equals(s3));//true  
+   System.out.println(s1.equals(s4));//false  
+ }  
+}  
+
+PALINDROME
+==========
+import java.util.Scanner;
+class Palindrome 
+{
+public static void main(String[] args) 
+{
+int a,no,b,temp=0;
+Scanner s=new Scanner(System.in);
+System.out.println("Enter any num: ");
+no=s.nextInt();
+b=no;
+while(no>0)
+{
+a=no%10;
+no=no/10;
+temp=temp*10+a;
+}
+if(temp==b)
+{
+System.out.println("Palindrome");
+}
+else
+{
+System.out.println("not Palindrome");
+}
+}
+}

@@ -1,0 +1,326 @@
+Inheritance
+=============
+
+Demo : Implementing Inheriting of properties from base to the derived class
+========================================================
+
+//Generalized class | Super Class| Parent Class| Base Class
+public class Employee 
+{
+	String empId,empName,addr;
+}
+
+//Specific Class |Derived class |sub Class|Child Class
+public class SalariedEmployee extends Employee 
+{	
+	int salary;
+	
+	public SalariedEmployee()
+	{
+		empId="E1001";
+		empName="Suresh";
+		addr="Hyderabad";
+		salary=3000;
+	}
+	
+	public void display()
+	{
+		System.out.println("Employee ID:"+empId);
+		System.out.println("Employee Name:"+empName);
+		System.out.println("Employee Address:"+addr);
+		System.out.println("Salary : "+salary);
+	}
+	
+	public static void main(String arg[])
+	{
+		SalariedEmployee salaryEmployee=new SalariedEmployee();
+		salaryEmployee.display();
+	}
+}
+
+Base Class Initialization
+=========================
+- In an inheritance we can initalize the member variables of the super class in sub class constructor.
+
+- Super class also can initialize its member in its constructor also.
+
+- If super class constructor initializes the member based on sub class then we need to parameterized constructor and this can be called using super keyword.
+
+Super Keyword
+================
+
+- Bydefault any constructor of the derived class will call default constructor of the base class.
+
+- To call the overloaded constructor of the base class from the derived class constructor then we need to use super keyword.
+
+Syntax
+==========
+super(parameters);
+
+- super keyword should be the first line in the constructor or the method.
+
+Demo : Implementing the super keyword.
+=================================
+
+//Generalized class | Super Class| Parent Class| Base Class
+public class Employee 
+{
+	String empId,empName,addr;
+	
+	public Employee() //Default Constructor
+	{
+		empId="E1001";
+		empName="Suresh";
+		addr="Hyderabad";
+	}
+	
+	//Overloaded Constructor
+	public Employee(String empid,String empname,String addr)
+	{
+		empId=empid;
+		empName=empname;
+		this.addr=addr;
+	}
+}
+
+
+//Specific Class |Derived class |sub Class|Child Class
+public class SalariedEmployee extends Employee 
+{	
+	int salary;
+	
+	public SalariedEmployee()//default constructor
+	{
+		salary=3000;
+	}
+	//overloaded constructor
+	public SalariedEmployee(String empId,String empName,String addr,int salary)
+	{
+		super(empId,empName,addr);
+		this.salary=salary;
+	}
+	
+	public void display()
+	{
+		System.out.println("Employee ID:"+empId);
+		System.out.println("Employee Name:"+empName);
+		System.out.println("Employee Address:"+addr);
+		System.out.println("Salary : "+salary);
+	}
+	
+	public static void main(String arg[])
+	{
+		SalariedEmployee salaryEmployee=new SalariedEmployee();
+		salaryEmployee.display();
+		
+		SalariedEmployee salaryEmployee2=new SalariedEmployee("E1002","Gagan","Mumbai",7000);
+		salaryEmployee2.display();
+	}
+}
+
+Method Overriding
+======================
+
+- When a base class method is no suitable to the derived class. In the derived class we need to rewrite that method. This process is called method overriding.
+
+//Generalized class|Super class
+public class Shape 
+{
+	double dim1,dim2;
+	
+	public Shape(double dim1,double dim2)
+	{
+		this.dim1=dim1;
+		this.dim2=dim2;
+	}
+	
+	public double area()
+	{
+		return 0.0;
+	}
+	
+}
+
+
+public class Rectangle extends Shape 
+{
+	public Rectangle(double dim1,double dim2)
+	{
+		super(dim1,dim2);
+	}
+	
+	//override
+	public double area()
+	{
+		return dim1*dim2;
+	}
+}
+
+
+public class ShapeMain 
+{
+	public static void main(String arg[])
+	{
+		Rectangle rectangle=new Rectangle(10,20);
+		
+		System.out.println("Area of Rectangle:"+rectangle.area());
+	}
+}
+
+
+Certain rules which need to follow when we do method overrding
+=================================================
+
+1. Method name should be same 
+
+2. Parameter level should be same
+
+3. Access Specifier level should be same or higher.
+
+- In java three access specifier and fourl access levels are there. The four access level from lower to higher.
+
+	1. Private		: We can't access this member in other class 
+
+	2. Default 	: This is not a keyword if we are not specifying any keyword to 			the member then bydefault is Default or package scope. These 			members can be accessible with in the package.
+
+	3. Protected	: These members can be accessible with in the package and 			outside the package if that class has inherited this class.
+
+	4. Public  		: These members can be accessible any where.
+
+
+A Default Method can overriden by -> Default , Protected, Public
+
+A Protected Method can overriden by -> Protected , Public
+
+A Public Method can overriden by -> Public
+
+Abstract Method
+===============
+
+- An abstract  method is the one which does not have method body.
+
+- These are the generialized methods which need to overriden by the derived class.
+
+- The derived class must override the abstract method of the base class else the derived class also will be declared as abstract class.
+
+Syntax
+=========
+
+Access_Specifier abstract retrunType methodName([Parameters]);
+
+Example
+==========
+
+public abstract double area();
+
+- If a class contains atleast one abstract method then that class will be declared as abstract.
+
+Abstract Class
+=================
+
+- An abstract class is one which has atleast one method as abstract.
+
+- Abstract class can contain other variables , concrete method as well as constructor.
+
+Syntax
+==========
+
+Access_Specifier abstract class ClassName
+{
+	//variables
+	// constructor
+	//concrete methods
+	//abstract method
+}
+
+- We can't create an instance of the abstract class.
+
+- In our scenario we can declare Shape class as abstract and its area() method is also abstract.
+
+//Generalized class|Super class
+public abstract class Shape 
+{
+	double dim1,dim2;
+	
+	public Shape(double dim1,double dim2)
+	{
+		this.dim1=dim1;
+		this.dim2=dim2;
+	}
+	
+	public abstract double area();
+}
+
+- We can't create an abstract class instance but we can create an object reference of that class.
+
+Shape shape;// Correct
+
+Shape shape=new Shape(10,20);//Error as Shape is abstract
+
+- To this object reference we can assign the derived class instance which has inherited this abstract class.
+
+Shape shape=new Rectangle(10,20); //Correct
+
+- Using this object reference we can call the methods of the Rectangle class which are inherited from super class to the sub class.
+
+Final Keyword
+====================
+
+- Final is a modifier in java.
+
+- Final modifier can be applied to the variable , mehtod or to a class.
+
+- If a variable is defined as final it act as constant it means we can't change the value.
+
+- If a method is defined as final then it can't be overriden.
+
+- If a class is defined as final then it can't be inherited.
+
+Next Class - 06-Oct-2017
+=================================================
+1. Final Implementation
+
+2. Interface Implementation
+
+3. Inner class
+
+4. Enumeration
+==================================================
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

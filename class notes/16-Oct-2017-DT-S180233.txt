@@ -1,0 +1,244 @@
+Creating a Table
+==================
+create table Student 
+(
+studid int ,
+studname varchar(100),
+addr varchar(200),
+age int
+)
+
+To display the Table
+===================
+select * from Student
+
+
+To insert the Data to the Table
+=========================
+insert into Student values(1001,'Suresh','Hyderabad',23)
+insert into Student values(1002,'Karthik','Hyderabad',23)
+insert into Student values(1003,'Vinod','Mumbai',22)
+
+
+Adding the Jar File for Driver
+===========================
+
+-> Right Click on the Project 
+-> Properties
+-> Click on Build Path
+-> Click on Libraries Tab
+-> Click on Add External Jar
+-> Click on the Specified Jar file 
+-> Click on Apply
+
+
+Jar :- Java Archieve - It is a zipped type of file which will contain the classes and interfaces.
+
+Sample Application in JDBC
+=========================
+import java.sql.*;
+public class DisplayTable 
+{
+	public static void main(String arg[])
+	{
+		try
+		{
+			Class.forName("org.h2.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/DT133","ecomm","ecomm");
+			Statement stmt=connection.createStatement();
+			ResultSet result=stmt.executeQuery("select * from Student");
+			
+			while(result.next())
+			{
+				System.out.print(result.getInt(1)+"   ");
+				System.out.print(result.getString(2)+"   ");
+				System.out.print(result.getString(3)+"   ");
+				System.out.println(result.getInt(4));
+			}
+			
+			result.close();
+			stmt.close();
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Arised:"+e);
+		}
+	}
+}
+
+
+ResultSetMetaData
+========================
+
+- The ResultSetMetaData object is going to display the column names 
+
+- To get the ResultSetMetaData object we need to call the getMetaData() method of the resultset.
+
+	ResultSetMetaData rsmd=resultset.getMetaData();
+
+Demo : Implementation of ResultSetMetaData
+====================================
+import java.sql.*;
+public class DisplayTable 
+{
+	public static void main(String arg[])
+	{
+		try
+		{
+			Class.forName("org.h2.Driver");
+			Connection connection=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/DT133","ecomm","ecomm");
+			Statement stmt=connection.createStatement();
+			ResultSet result=stmt.executeQuery("select * from Student");
+			
+			ResultSetMetaData rsmd=result.getMetaData();
+			int colcount=rsmd.getColumnCount();
+			
+			for(int i=1;i<=colcount;i++)
+			{
+				System.out.print(rsmd.getColumnName(i)+"   ");
+			}
+			
+			System.out.println();
+			
+			while(result.next())
+			{
+				System.out.print(result.getInt(1)+"   ");
+				System.out.print(result.getString(2)+"   ");
+				System.out.print(result.getString(3)+"   ");
+				System.out.println(result.getInt(4));
+			}
+			
+			result.close();
+			stmt.close();
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Arised:"+e);
+		}
+	}
+}
+
+
+PreparedStatement
+==================
+
+- This type of statement is used when we want to implement the runtime queries.
+
+- To get the prepared statement then we need to use the prepareStatement() method.
+
+PreparedStatement psmt=conn.prepareStatement("insert into Student values(?.?,?,?)");
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+public class PreparedStatementDemo 
+{
+	public static void main(String arg[])
+	{
+		try
+		{
+			Class.forName("org.h2.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/DT133","ecomm","ecomm");
+			PreparedStatement pstmt=conn.prepareStatement("insert into Student values(?,?,?,?)");
+			
+			int studId,age;
+			String studName,addr;
+			
+			Scanner scanner=new Scanner(System.in);
+			
+			System.out.println("Enter Student ID:");
+			studId=scanner.nextInt();
+			System.out.println("Enter Student Name:");
+			studName=scanner.next();
+			System.out.println("Enter Student Address:");
+			addr=scanner.next();
+			System.out.println("Enter Student Age:");
+			age=scanner.nextInt();
+			
+			pstmt.setInt(1,studId);
+			pstmt.setString(2,studName);
+			pstmt.setString(3,addr);
+			pstmt.setInt(4, age);
+			
+			int row_eff=pstmt.executeUpdate();
+			
+			if(row_eff>0)
+				System.out.println("Row Inserted");
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Arised"+e);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+Thread
+=============
+
+-  It is a sequential execution with in a process.
+
+-  We implement thread with in our java application basically to write concurrent execution.
+
+-  Threads run with in the JVM and it is managed by the JVM.
+
+-  Thread execution may be single thread or multi threaded.
+
+- Every application will have atleast one thread and that thread is called as Main thread.
+
+- To get the main thread we need to call currentThread() method of the Thread class.
+
+- Thread class is in java.lang package.
+
+- Every thread will have mainly two information 
+
+	1. Thread Name
+
+		- To get the Thread name we need to call the getName() method of the Thread class.
+
+	2. Thread Priority 
+
+		- To get the Priority of the thread we need to call the getPriority() method of the Thread class.
+
+
+17-Oct-2017 - Tuesday
+===================================
+Thread - currentThread, Child Thread , Synchronization
+
+Html
+======================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

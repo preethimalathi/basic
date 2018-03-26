@@ -1,0 +1,272 @@
+Dynamic Web Programming
+======================
+
+- To discuss dynamic web programming let us first see
+
+1. Static Web Page 
+
+	- This is the web page which does not contain any dynamic activity it basically contains the pure designing code.
+
+	- All Html , CSS related pages are static web pages.
+
+2. Dynamic Web Page
+
+	- This is the web page where it implements the dynamic activity
+	
+	1. Accessing the data from Database
+
+	2. Accessing the Payment gateway
+
+	3. Accessing the end user data and sending to database.
+
+	- We can create dynamic web page using various ways
+
+	1. .Net 	: Microsoft		: ASP.Net
+
+	2. Java	: Oracle			: Servlet & JSP
+
+	3. PHP 	: Open Source		: PHP
+
+	4. MEAN 	: Open Source ( MongoDB , Expression JS , Angular JS , Node JS)
+
+
+Terminologies of Web Programming
+===========================
+
+1. Web Server :  A web server is a container which contains the web pages. On request of the 	          user  the page can be served.
+
+	- Different web server which are available they are
+ 
+	1. IIS - Internet Information Server		: .Net
+
+	2. GlassFish,Tomcat, JBoss,WebSphere	: Java
+
+	3. Wamp, Xamp				: PHP
+
+	4. NodeJS				: MEAN
+
+
+2. Http : Hypertext Transfer Protocol : This protocol which is used for sending and receiving the  http data from client to the server.
+
+	http://www.yahoo.com
+
+3. Url : Unified Resource Locator  : This the remote path for the web page which we want to access.
+
+	http://www.niitstudent.com/index.aspx
+
+	- Here index.aspx is the web page and the total path of this page in the above.
+
+4. Request : A request is the one which send from the web client i.e browser to the server  and basically this will contain the Url of the Page  and may be it will contain the form data which we want send to the server.
+
+
+5. Response : A response is the one which send from the web server to the client and this response object which contains various things like Response code , Response Type and the Response body.
+
+
+Servlet
+================
+
+- Servlet is a server side program which enhances the functionality of the web Server.
+
+- Servlet is a simple java program. Any java class can be called as Servlet if it has implemented Servlet interface of javax.servlet package.
+
+public interface Servlet
+{
+	public void init(ServletConfig config);
+	public void service(ServletRequest request, ServletResponse response)throws IOException,ServletException;
+	public void destroy();
+	public ServletConfig getServletConfig();
+	public String getServletInfo();
+}
+
+What is the Life Cycle of Servlet?
+==========================
+
+- There are three phases of the Servlet they are
+
+1. init()  		: This method basically used for initialization of the Servlet and basically works like a constructor to the servlet. This will be called once for the servlet
+
+2. service()	: This method is used for processing the servlet. This method has two object i.e request and response. This method will process the request and sends the response.
+
+3. destroy()	: This method is for removing the servlet instance of the memory. This also will be called once for the servlet instance.
+
+
+Demo : Creating a Simple Servlet using Servlet Interface
+=======================================
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+
+
+@WebServlet("/MyServlet")
+public class MyServlet implements Servlet 
+{
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub		
+	}
+
+	@Override
+	public ServletConfig getServletConfig() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getServletInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void init(ServletConfig arg0) throws ServletException 
+	{	
+	}
+	@Override
+	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException 
+	{
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		
+		out.println("<html><body>");
+		out.println("This is the First Servlet");
+		out.println("</body></html>");
+	}
+}
+
+
+GenericServlet
+=================
+
+- As implementing servlet interface and override all the methods it is very difficult hence java provided a class called as GenericServlet.
+
+- GenericServlet has implemented Servlet interface so we need not override all the method of the Servlet interface and only the request method we can override.
+
+- Now if we want to create a servlet then we can extend the GenericServlet class and override the service method.
+
+Demo : Generic Servlet Implementation
+==================================
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.GenericServlet;
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
+
+
+@WebServlet("/MyGenericServlet")
+public class MyGenericServlet extends GenericServlet implements Servlet 
+{
+	private static final long serialVersionUID = 1L;
+
+	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException 
+	{
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		
+		out.println("<html><body>");
+		out.println("This is the First Generic Servlet");
+		out.println("</body></html>");
+	
+	}
+
+}
+
+
+HttpServlet
+================
+
+- HttpServlet is also another class which is provided by java to create Servlet.
+
+- This class is basically used for creating servlet for http clients i.e browsers.
+
+- This class is available in javax.servlet.http package.
+
+- Here instead of service() method we have various doXXX() methods are available here XXX denotes the various http methods like
+
+	doGet()
+	doPost()
+	doDelete()
+	doOption()
+
+- There are various http methods which are Get , Post , Delete , Head , Put , Option
+
+- If a client calls the Servlet using Get type of request then doGet() method will be called.
+
+- If a client calls the Servlet using Post type of request then doPost() method will be called.
+
+Demo : HttpServlet Implementation
+==================================
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/MyHttpServlet")
+public class MyHttpServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		
+		out.println("<html><body>");
+		out.println("This is the First Http Servlet");
+		out.println("</body></html>");
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+

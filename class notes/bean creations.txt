@@ -1,0 +1,192 @@
+com.niit.model
+---------------
+
+package com.niit.model;
+
+public class HelloWorld {
+private String username;
+public void sayHello(){
+	System.out.println(" Hello " + username);
+	System.out.println("Welcome to Spring framework " );
+}
+public String getUsername() {
+	return username;
+}
+public void setUsername(String username) {
+	System.out.println("username is " + username);
+	this.username = username;
+}
+/*
+ * Parameterized constructor
+ * HelloWorld hw=new HelloWorld("Adam")
+ */
+public HelloWorld(String username) {
+	super();
+	this.username = username;
+}
+/*
+ * Default Constructor
+ * HelloWorld hw1=new HelloWorld()
+ */
+public HelloWorld() {
+	super();
+}
+
+}
+
+==========================================================
+Right click on project and create "beans.xml"
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:c="http://www.springframework.org/schema/c"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--  to create beans  -->
+<!--  HelloWorld helloWorld=new com.niit.HelloWorld() -->
+<!-- helloWorld.setUsername("John") -->
+<bean id="helloWorld" class="com.niit.model.HelloWorld">
+<property name="username" value="John"></property>
+</bean>
+
+<!-- HelloWorld helloWorld1=new HelloWorld("Adam") -->
+
+<bean id="helloWorld1" class="com.niit.model.HelloWorld">
+<constructor-arg name="username" value="Adam"></constructor-arg>
+</bean>
+
+</beans>
+======================================================================
+
+Add dependency in pom.xml file
+------------------------------
+<dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-core</artifactId>
+  <version>4.3.8.RELEASE</version>
+  </dependency>
+  <dependency>
+  <groupId>org.springframework</groupId>
+  <artifactId>spring-context</artifactId>
+  <version>4.3.8.RELEASE</version>
+  </dependency>
+
+=======================================================================
+App.java
+---------
+
+package com.niit.samplebeancreation;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+import com.niit.model.HelloWorld;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	ApplicationContext context=new FileSystemXmlApplicationContext("beans.xml");
+    	HelloWorld helloWorld=(HelloWorld)context.getBean("helloWorld");//get bean from spring container
+        helloWorld.sayHello();  
+        HelloWorld helloWorld1=(HelloWorld)context.getBean("helloWorld1");
+        helloWorld1.sayHello();
+    }
+}
+
+
+=============================================================================================================
+ConfigurationClazz in package com.niit.model
+
+package com.niit.model;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class ConfigurationClazz {
+	@Bean(name="firstHelloWorld")
+	public HelloWorld helloWorld(){
+		HelloWorld helloWorld=new HelloWorld();//default constructor
+		helloWorld.setUsername("Tom");
+		return helloWorld;
+	}
+	
+	
+    @Bean(name="secondHelloWorld")
+	public HelloWorld helloWorld1(){
+		return new HelloWorld("Smith");//Parmeterized Constructor
+	}
+}
+
+============================================================================================================
+
+AnnotationBasedApp.java
+
+package com.niit.samplebeancreation;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.model.ConfigurationClazz;
+import com.niit.model.HelloWorld;
+
+public class AnnotationBasedApp {
+public static void main(String[] args) {
+	
+	ApplicationContext context=new AnnotationConfigApplicationContext(ConfigurationClazz.class);
+	   HelloWorld helloWorld=(HelloWorld)context.getBean("firstHelloWorld");
+	   helloWorld.sayHello();
+}
+}
+
+===============================================================================================================
+
+com.niit.model
+--------------
+
+package com.niit.model;
+
+public class Traveller {//Traveller depends on Interface vehicle [loose coupling]
+private Vehicle vehicle;//loose coupling
+
+public void travelDetails(){
+	vehicle.modeOfTransport();
+}
+}
+
+================================================================================================================
+package com.niit.model;
+
+public interface Vehicle {
+void modeOfTransport();
+}
+=================================================================================================================
+package com.niit.model;
+
+public class Car implements Vehicle{
+
+	public void modeOfTransport() {
+	
+	System.out.println("Mode OF Transport is CAR" );	
+	}
+
+}
+==================================================================================================================
+package com.niit.model;
+
+public class Auto implements Vehicle {
+	public void modeOfTransport() {
+		
+		System.out.println("Mode OF Transport is AUTO" );	
+		}
+}
+==================================================================================================================
+
+
+

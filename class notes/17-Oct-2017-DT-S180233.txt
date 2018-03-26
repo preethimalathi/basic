@@ -1,0 +1,269 @@
+Demo : Main Thread Demo
+======================
+public class MainThreadDemo 
+{
+	public static void Hello()
+	{
+		System.out.println("Name of the Thread which Runs Hello Method:"+Thread.currentThread().getName());
+	}
+	public static void main(String arg[])
+	{
+		Thread mainThread=Thread.currentThread();
+		
+		System.out.println("Name of the Thread:"+mainThread.getName());
+		System.out.println("Priority of the Thread:"+mainThread.getPriority());
+		
+		mainThread.setName("MyMainThread");
+		mainThread.setPriority(8);
+		
+		System.out.println("Name of the Thread After Change:"+mainThread.getName());
+		System.out.println("Priority of the Thread After Change:"+mainThread.getPriority());
+		
+		MainThreadDemo.Hello();
+	}
+}
+
+- Here main method and the Hello() method both will be called by the same thread itself.
+
+- To create our own Thread or application specific thread the we need to create Child threads.
+
+- Main thread will be created by the java.
+
+- To create child thread we have two approaches 
+
+	1. By extending the Thread class
+
+	2. By implementing Runnable interface
+
+1. By extending Thread class
+=======================
+
+- To do this we need to create a class by extending to the Thread class of java.lang package.
+
+
+public class ChildThread extends Thread 
+{
+	public void run()
+	{
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(Thread.currentThread().getName()+":"+i);
+		}
+	}
+	public static void main(String arg[])
+	{
+		ChildThread firstThread=new ChildThread();
+		firstThread.setName("Thread1");
+		
+		ChildThread secondThread=new ChildThread();
+		secondThread.setName("Thread2");
+		
+		System.out.println("First Thread Status : "+firstThread.isAlive());
+		
+		firstThread.start();
+		secondThread.start();
+		
+		System.out.println("First Thread Status After Start:"+firstThread.isAlive());
+	}
+}
+
+
+2. By Implementing Runnable Interface
+================================
+public class RunnableDemo implements Runnable 
+{
+
+	@Override
+	public void run() 
+	{
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println(Thread.currentThread().getName()+":"+i);
+		}
+	}
+	
+	public static void main(String arg[])
+	{
+		RunnableDemo runnable_target=new RunnableDemo();
+		
+		Thread T1=new Thread(runnable_target);
+		T1.setName("FirstThread");
+		Thread T2=new Thread(runnable_target);
+		T2.setName("SecondThread");
+		
+		T1.start();
+		T2.start();
+	}
+}
+
+Synchronization
+================
+
+- Synchronization is a concept which says the thread will execute in a sequence.
+
+- In a Synchronized envrinoment there is a concept called monitor which is going to manage the thread execution.
+
+- To implement synchronization we need to implement synchronized keyword.
+
+class Sync
+{
+	public synchronized static void showAtmProcess(String processes[]) throws InterruptedException
+	{
+		for(String process:processes)
+		{
+			Thread.sleep(1000);
+			System.out.println(process+",");
+		}
+	}
+}
+class SyncDemo extends Thread
+{
+	String atm_Process[]= {"Enter Pin","Enter Amount","Check Balance","UpdateTransaction","Complete"};
+	public void run()
+	{
+		try 
+		{
+			Sync.showAtmProcess(atm_Process);
+		} catch (InterruptedException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+}
+public class SynchronizedDemo 
+{
+	public static void main(String arg[])
+	{
+		SyncDemo T1=new SyncDemo();
+		SyncDemo T2=new SyncDemo();
+		
+		T1.start();
+		T2.start();
+	}
+}
+
+
+
+
+==========================================================
+Core Java Eligibility Test  : 23-Oct-2017 - Monday
+
+Objective Question : 25		: 40
+
+Subjective Question : 5		: 60 - OOPS , Collection , 
+===========================================================
+19-Oct-2017 - Diwali Holiday 
+
+18-Oct-2017 - Only chennai Holiday 
+============================================================
+
+
+Html 
+==================
+- HyperText Markup Language
+
+- Web Page
+=============
+
+- Web Page is an electronical page which is consisted of text , images , table , links , form and other program.
+
+Who Constructor Web page?
+======================
+
+- The browser application construct web page for us. It requires some instruction to create that. This instruction we can provide using html.
+
+Browser : IE , Chrome , Firefox , Safari etc.
+
+Markup Language
+=================
+
+- Html is called as markup language as it is going to mark the text to be hypertext.
+
+- In html we are going to use the various tags by which we develop the web pages.
+
+10 - Number
+
+<age>10</age>  - 10 is the age of a kid
+
+- Tag
+============
+
+- A tag is a word which is enclosed with angular brackets.
+
+- There are various tags which are available they are
+
+<html>,<body>,<head> , <font> , <a href=> , <i> , <u> etc.
+
+
+Different Version of Html
+=======================
+
+- Html 1.0
+
+- Html 2.0 
+
+- Html 4.0 
+
+- Html 5.0  - Html 5
+
+
+Sample Document
+===================
+<html>
+<head>
+	<title> This is the First Page</title>
+</head>
+<body>
+	This is the First Html page I am creating.
+</body>
+</html>
+
+
+-Heading Tag
+===============
+
+- There are five different type of tags which are available they are
+
+	1. H1
+
+	2. H2
+
+	3. H3
+
+	4. H4
+
+	5. H5
+
+<Hn align="center|right|left"> Content Goes Here </Hn>
+
+n Here 1 to 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,223 @@
+Object Oriented Programming in Java
+============================
+- Before we discuss about the object oriented programming we need to see the procedure oriented programming.
+
+- In Procedure oriented programming we emphasis on functions rather than data.
+
+- Some of the programming languages which are on procedure oriented approach they are
+
+	1. C 		2.Pascal		3.Cobol		4.Fortran
+
+- These programming languages are basically used for mathematic and scientific calculations.
+
+- Data level security is not provided in these type of languages hence we move towards the object oriented programming languages.
+
+- Object oriented programming is useful when we want to develop the real world programs.
+
+- Some of the languages which support this concept
+
+	1. Java		2.C# 		4.vb.net		4.C++
+
+- Some of the main features or paradigm of object oriented programming
+
+1. Abstraction
+	- It is a concept where it says hiding the complexity from the end user.
+
+	- Data hiding
+2. Encapsulation
+
+	- It is implementing the abstraction.
+
+	- It is wrapping of the data members(properties) and the code members(Method|function) which act upon the data into a single unit. And in any object oriented programming class is the basic for encapsulation.
+
+3. Inheritance
+	- Reusing the data members and code members into another class.
+
+	- Avoid the redundancy or duplicate code.
+
+4. Polymorphism
+
+	- A single object exhibiting different behaviours.
+
+
+- When we write the object oriented programming we come across two components
+
+	1. Class				2.Object
+
+Class
+=============
+- Class is an user defined data type.
+
+- It is a logical entity 
+
+User Defined DataType?
+======================
+
+- The existing data type are not suitable to store the real data. To store the real data we need to create our own defined data type. We can create our own defined data type using class.
+
+Some of the real world data : Customer , Employee , Student , Account , Order
+
+Syntax
+============
+
+class ClassName
+{
+	//Data Members - Properties | Attributes  - variables
+
+	//Code Members - Behaviours - Methods|Function
+}
+
+Example
+==========
+class EmployeeDetail
+{
+	//Data Members
+	String empId ,empName;
+	float salary;
+	int age;
+
+	//Code Members
+	public void calcSalary()
+	{
+	}
+	public void displayEmployeeDetail()
+	{
+	}	
+}
+
+
+Object
+===============
+
+- It is a physical entity which has memory.
+
+- It is a runtime instance of a class.
+
+- Object is a variable of the type class.
+
+int age;
+
+-Here int is a data type which does not take any memory it says its variable will hold whole value.
+
+- age is a variable of type int which will take memory.
+
+Syntax of Creating Object
+======================
+
+ClassName object_name=new Constructor([Parameters]);
+
+Employee employee;
+
+- Here Employee is the class which is logical entity which will not take memory.
+
+- employee is an object which will take memory.
+
+- For a normal primitive datatype java already knows the memory how much need to be assigned to a variable hence we dont not require any extra operation.
+
+- But for an object java does not know how much memory it has to be allocated hence it has be allocated using new operator.
+
+Example of creating object
+======================
+
+Employee employee=new Employee();
+
+Accessing the Members of the class using Object
+======================================
+
+- To access the data member or the code member of the class using object syntax
+
+object_name.member_name=value;
+
+object_name.method();
+
+Demo : Creating an object and Accessing the Data Members and Manipulate with them.
+================================================================
+Box.java
+=============
+public class Box 
+{
+	double width,height,depth;
+}
+
+BoxMain.java
+================
+public class BoxMain 
+{
+	public static void main(String arg[])
+	{
+		Box box=new Box();
+		
+		//Accessing the data members
+		
+		box.width=10;
+		box.height=15;
+		box.depth=20;
+		
+		//Here we are manipulating the object members using arithmetic Operator
+		double volume;
+		volume=box.width*box.height*box.depth;
+		
+		System.out.println("Volume of Box:"+volume);
+	}
+}
+
+
+Method
+=================
+
+- A method is a sub program which solves a sub task.
+
+- Methods are also called as function or behaviours of the class.
+
+Syntax
+============
+
+Access_Specifier returnType methodName([Parmeters])
+{
+	//code goes here
+}
+
+
+Access_Specifier 	: The access specifiers are like public , private , protected or package scope. These specifier specify this method where it can be accessible.
+
+Return Type 	: This is the output of the method. The function which will return the type.
+
+The valid values for  : int , char , void , array , class 
+
+methodName	: This is the name of the method 
+
+Parameters	: These are the input for the methods.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

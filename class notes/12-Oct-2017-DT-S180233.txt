@@ -1,0 +1,356 @@
+Demo 2
+============
+import java.util.regex.*;
+public class RegExpDemo2 
+{
+	public static void main(String arg[])
+	{
+		String target_string="It is a best of times. bust";
+		
+		Pattern pattern=Pattern.compile("b.st");
+		
+		Matcher matcher=pattern.matcher(target_string);
+		
+		while(matcher.find())
+		{
+			System.out.println(matcher.group());
+		}
+		
+	}
+}
+
+Exception Handling
+======================
+
+Whenever we compile and execute a java program we may get the following type of errors.
+
+1. Compile Error
+	
+	- In compile time error it occurs basically when we do any spelling mistake or comma or any other operator missing.
+
+	- To resolve we need to edit the program and then re execute it.
+
+2. Logical Error
+
+	- This type of error occurs mainly in condition and looping time where we may have written a wrong logic. This type of error will display the output but which is not intended one.
+
+	- To resolve this type of error we need to execute the program step by step.
+
+3. Runtime Errror
+
+	- This type of error it will occur for the various cases and this will stop the program execute and comes out.
+
+	- Some of the situation where this type of error occur are
+
+	1. Trying to divide by 0.
+
+	2. Trying to access a file which is not existing
+
+	3. Trying to access a database which is in shut mode
+
+	- To resolve this type of error we need to go for exception handling.
+
+Exception
+=============
+ - It is an abnormal condition which occurs at the runtime and suspends the execution of the program.
+
+
+What happens When Exception Occur?
+=============================
+- When an exception occur java creates an instance of that exception and throws to the program.
+
+Note : So every exception in java it is a class hence java is able to create instance of that.
+
+- Now if the program is handled the exception then as per the handler it goes else it will suspend the execution and comes out.
+
+- All the exception class which are in java having the super class as Exception.
+
+- Exception class is in java.lang package.
+
+Handling Exception
+====================
+
+- To handle the exception we need to go for five keywords they are
+
+1. try 		2.catch		3.throw		4.throws	    5.finally
+
+1. try
+============
+
+- This particular block will contain the code which may arise an exception.
+
+try
+{
+	//code which may generate exception
+}
+
+2.catch
+==========
+
+- This clause will follow the try block and it will contain an exception object reference.
+
+- If the try block generated any exception which is in the catch clause then the catch block wil execute.
+
+try
+{
+	//code may generate exception
+}
+catch(Exception obj_ref)
+{
+	//code goes here
+}
+
+Unhandled Code
+=====================
+
+public class UnHandled 
+{
+	public static void main(String arg[])
+	{
+		int var1=42,var2=0,result;
+		
+		result=var1/var2;
+		
+		System.out.println("Result:"+result);
+		
+		System.out.println("After the Print");
+	}
+}
+
+
+When the above program compiled and executed the below error will come.
+
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at UnHandled.main(UnHandled.java:7)
+
+- Here the program has suspending at the line number 7 and it has not proceed to further.
+
+- But if we see the line no 11 does not have any exception still it will not execute as from line 7 it will suspend.
+
+Handled Code
+================
+public class Handled 
+{
+	public static void main(String arg[])
+	{
+		int var1=42,var2=0,result;
+		
+		try
+		{
+		result=var1/var2;
+		System.out.println("Result:"+result);
+		}
+		catch(ArithmeticException ae)
+		{
+			System.out.println("Exception Arised:"+e);
+		}
+		System.out.println("After the Print");
+	}
+}
+
+- Now in the above the program will execute and it will show the detail of exception at the same time it will continue to the further code.
+
+Exception Arised:java.lang.ArithmeticException: / by zero
+After the Print
+
+Multiple Catch 
+===================
+
+- A try block may contain multiple exception in certain time. 
+
+- So to handled multiple exception we need to write multiple catch clause.
+
+try
+{
+	//code may generate exception
+}
+catch(Name1Exception obj_ref1)
+{
+}
+catch(Name2Exception obj_ref2)
+{
+}
+
+Demo : 
+==============
+import java.util.*;
+public class MultipleCatch 
+{
+	public static void main(String arg[])
+	{
+		int arr[]= {2,3,0},var1=42,result,index;
+				
+		try
+		{
+			Scanner scanner=new Scanner(System.in);
+			System.out.println("Enter the Index Value:");
+			index=scanner.nextInt();
+			
+			result=var1/arr[index];
+					
+					//index=0=> 42/arr[0]=>42/2=21
+			
+					//index=1=> 42/arr[1]=>42/3=14
+			
+					//index=2=> 42/arr[2]=>42/0= Arithmetic Exception
+			
+					//index=3=> ArrayIndexOutOfBoundsException
+					
+			
+			System.out.println("Result:"+result);
+		}
+		catch(ArithmeticException ae)
+		{
+			System.out.println("ArithmeticException Occured:"+ae);
+		}
+		catch(ArrayIndexOutOfBoundsException ae1)
+		{
+			System.out.println("ArrayIndexOutOfBounds "+ae1);
+		}
+		catch(Exception exce) //Global catch Handler
+		{
+			System.out.println("Exception Arised:"+exce);
+		}
+		
+		System.out.println("After the Program");
+		
+	}
+}
+
+
+Note : Global catch handler will come after all the specific catch handler. we can't write a specific catch handler after the global catch handler.
+
+Finally Block
+===============
+- Finally block executes even an exception occur or may not occur.
+
+- This block basically used for cleaning the resources.
+
+	Ex : File Pointer Closing , Database Connection Closing
+
+
+import java.io.*;
+public class FinallyBlock 
+{
+	public static void main(String arg[])
+	{
+		FileInputStream fis=null;
+		try
+		{
+			fis=new FileInputStream("c:\\Hello.txt");
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("Exception Arised"+e);
+		}
+		finally
+		{
+			try
+			{
+			fis.close();
+			System.out.println("File InputStream Closed");
+			}
+			catch(Exception e) {}
+		}
+		
+	}
+}
+
+
+Try with Resources
+=======================
+
+- This concept is included from jdk 1.7 onwards.
+
+- In this case we write the try block with resource object opening and here we need not to close that resource explicitely.
+
+- The resource will be closed automatically.
+
+- Try with resources can be implemented when the resource is implemented with AutoClosable interface.
+
+Syntax
+===========
+
+try(Resource Object Initialization)
+{
+
+}
+catch(Exception e)
+{}
+
+
+import java.io.*;
+public class TryWithResource 
+{
+	public static void main(String arg[])
+	{
+		
+		try(FileInputStream fis=new FileInputStream("c:\\Hello.txt");)
+		{
+		
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("Exception Arised"+e);
+		} 
+		catch (IOException e1) 
+		{
+			System.out.println("Exception Arised"+e1);
+		}
+	}
+}
+
+
+throw
+=============
+
+- throw keyword is used when we want to throw a particular exception explicitely.
+
+- Basically to throw the user defined exception we use throw keyword.
+
+Syntax
+=========
+
+	throw throwable_instance;
+
+throws
+==============
+
+- throws keyword is used to implement with method.
+
+- This keyword is to tell that the particular method is throwing an exception.
+
+Syntax
+==========
+
+public void methodname([parameters]) throws ExceptionList
+{
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

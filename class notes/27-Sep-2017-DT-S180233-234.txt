@@ -1,0 +1,373 @@
+Operators
+===============
+
+- It is a symbol which operates on one or more operands.
+
+- There are various operators which we can use in java
+
+1. Assignment Operator 			: =
+
+2. Arithmetic Operator 			: + , - , * , / , %
+
+3. Relational Operator | Comparision Operator 	: > , < ,>= , <= , != , ==
+
+int var1=10,var2=15;
+
+var1>var2;// Called Condition or relational expression
+
+- Note a condition or relational expression will return true or false.
+
+4. Logical Operator				: && , || , !
+
+- Logical operators which we can use for combining two or more relational expression.
+
+int var1=10,var2=15,var3=20;
+
+var1>var2 && var1>var3 //logical expression
+
+- A logical expression will return either true or false value.
+
+5. Unary Operator				: ++ , --
+
+int var1=10;
+
+var1++; //var1=var1+1
+
+//var1?11
+
+6. Arithmetic Assignment Operator		: += , -= , *= , /= , %=
+
+int var1=10;
+
+var1+=5;  // var1=var1+5
+
+Now var1 value 15
+
+7. Conditional Operator | Ternary Operator	: ? :
+
+
+Conditional Construct
+=======================
+- There are mainly two different type of conditional construct which we can implement they are
+	1. If 
+
+	2. switch
+
+If Conditional Construct
+======================
+
+- To evaluate any condition then we need to use if conditional construct.
+
+- There are again we can divide the if  conditional construct into four different types.
+
+1. Simple If		2. If....else		3.Nested if	4. If Ladder
+
+1.Simple If
+===========
+
+if(condition)
+{
+	//code goes here
+}
+
+2. If ....else
+=============
+
+if(condition)
+{
+	//code goes here
+}
+else
+{
+	//code goes here
+}
+
+3. If Ladder
+===============
+
+- Multiple Condition to evaluate
+
+if(condition1)
+{
+	//code goes here
+}
+else if(condition2)
+{
+	//code goes here
+}
+else if(condition3)
+{
+	//code goes here
+}
+else
+{
+}
+
+Nested If
+================
+
+if(condition)
+{
+	if(condition)
+	{
+	//code goes
+	}
+	else
+	{
+	//code goes
+	}
+}
+else
+{
+	if(condition)
+	{
+	//code goes
+	}
+	else
+	{
+	//code goes
+	}
+}
+
+
+Switch 
+===============
+
+- This is another conditional construct which we can use to evaluate values based.
+
+Syntax
+=========
+
+switch(variable)
+{
+	case value1:
+	//code goes here
+	break;
+	case value2:
+	//code goes here
+	break;
+	case value3:
+	//code goes here
+	break;
+	default:
+	//code goes here
+}
+
+
+
+Demo : Leap Year using Nested If
+===============================
+
+import java.util.*;
+class LeapYear
+{
+	public static void main(String arg[])
+	{
+	
+	int year;
+
+	System.out.println("Enter Year Value:");
+	//Scanner is built in class which is used to take the input from keyboard.
+	Scanner scanner=new Scanner(System.in);
+	//nextInt() is a built in method of class scanner which will take the input as integera
+	year=scanner.nextInt();
+
+	if(year%100==0) //1900 ->true   1988->false  2000->true
+	{
+		if(year%400==0)//1900->false 2000->true
+			System.out.println("Leap Year");
+		else
+			System.out.println("Not a Leap Year");
+	}
+	else
+	{
+		if(year%4==0) //1988->true
+			System.out.println("Leap Year");
+		else
+			System.out.println("Not a Leap Year");	
+	}
+	
+
+	}
+}
+
+Demo : using Logical Operator 
+=============================
+
+import java.util.*;
+class LeapYear
+{
+	public static void main(String arg[])
+	{
+	
+	int year;
+
+	System.out.println("Enter Year Value:");
+	//Scanner is built in class which is used to take the input from keyboard.
+	Scanner scanner=new Scanner(System.in);
+	//nextInt() is a built in method of class scanner which will take the input as integera
+	year=scanner.nextInt();
+
+	if(year%4==0 && (year%100!=0 || year%400==0))
+		System.out.println("Leap Year");
+	else
+		System.out.println("Not a Leap Year");
+	
+
+	}
+}
+
+
+Demo : Implementing Switch Case
+================================
+import java.util.*;
+
+class SwitchDemo
+{
+	public static void main(String arg[])
+	{
+	String weekday;
+
+	System.out.println("Enter the Weekday in Three Letter Format (Ex : Mon)");
+
+	Scanner scanner=new Scanner(System.in);
+
+	weekday=scanner.next();
+
+	switch(weekday)
+	{
+		case "Mon":
+		System.out.println("Monday");
+		break;
+		case "Tue":
+		System.out.println("Tuesday");
+		break;
+		case "Wed":
+		System.out.println("Wednesday");
+		break;
+		case "Thur":
+		System.out.println("Thursday");
+		break;
+		case "Fri":
+		System.out.println("Friday");
+		break;
+		case "Sat":
+		System.out.println("Saturday");
+		break;
+		default:
+		System.out.println("Sunday");
+	}
+
+	}
+}
+
+
+Note : From jdk1.7 onwards we can use String in switch case other than the legacy versions will use only integer and character.
+
+Control Structure | Iterative Construct
+=============================
+
+- To execute a certain statement for number of times than we can use the iterative construct.
+
+- There are three major iterative construct which we can use they are
+
+1. for Loop		2.while Loop		3. do...while Loop
+
+
+1. For Loop
+==============
+- This a compact loop
+Syntax
+=========
+
+for(initialization ; condition ; increment/decrement)
+{
+	//code goes here
+}
+
+2.While Loop
+=================
+Syntax
+============
+while(condition)
+{
+	//code goes
+}
+
+3.do....while Loop
+=================
+
+- Irrespective condition whether true or false if we want to execute a loop at least once then we can use do while loop.
+
+Syntax
+===========
+do
+{
+//code goes here
+}while(condition);
+
+
+Demo : Print 1 to 10
+========================
+class LoopDemo
+{
+	public static void main(String arg[])
+	{
+
+	int i;
+
+	for(i=1;i<=10;i++)
+	{
+		System.out.println(i);
+	}
+
+	}
+}
+
+
+Demo : While Loop
+======================
+
+class LoopDemo
+{
+	public static void main(String arg[])
+	{
+
+	int i=1;
+
+	while(i<=10)
+	{
+		System.out.println(i);
+		if(i==5)
+			break;
+		
+		i++;
+	}
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

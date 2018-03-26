@@ -1,0 +1,279 @@
+This Keyword
+=================
+
+- When method scope variable and class scope variable are same then in the method scope it will always hide the implementation of class scope variable. 
+
+- So to refer to the class variable from the method scope we need to use this.
+
+Syntax
+========
+
+this.class_scope_variablename
+
+Demo : Implementing This Keyword
+============================
+
+public class ThisDemo 
+{
+	int var1;
+	
+	public ThisDemo(int var1)
+	{
+		this.var1=var1;
+	}
+	
+	public void display()
+	{
+		System.out.println("var1:"+var1); //20
+	}
+	
+	public static void main(String arg[])
+	{
+		ThisDemo obj=new ThisDemo(20);
+		obj.display();
+	}
+}
+
+
+Static Keyword
+==================
+
+- Static is a modifier in java which will modify the property of a variable , method or to a class.
+
+- There are two different type of memebers can be present in a class they are
+
+	1. Instance Members
+
+		- Instance members are those who  are specific to the instance or object.
+
+	2. Static Members
+
+		- Static members are those who are specific to the class not to a particular instance.
+
+- We can declare static to a variable , method or to a class also.
+
+Static Variable
+==================
+
+- If a variable is declared as static then there will be one copy of that variable will be declared for all the instances of the class.
+
+- This memory will be shared to all the instances.
+
+public class StaticVariableDemo 
+{
+	static int var1;
+	int var2; //instance variable
+	
+	public StaticVariableDemo()
+	{
+		var1++;
+		var2++;
+	}
+	
+	public static void main(String arg[])
+	{
+		StaticVariableDemo obj1=new StaticVariableDemo();
+		StaticVariableDemo obj2=new StaticVariableDemo();
+		StaticVariableDemo obj3=new StaticVariableDemo();
+		
+		System.out.println("Variable 1:"+obj3.var1);
+		System.out.println("Variable 2:"+obj3.var2);
+		
+	}
+}
+
+Output
+=============
+Variable 1:3
+Variable 2:1
+
+- Static variable need not to be accessed from the instance we can also call using class.
+
+- Hence static variable are also termed as class variable.
+
+
+Static Method
+===============
+
+- Static method is a method which not specific to a instance it means it does not use the instance variable.
+
+- Static method does not use the instance to execute.
+
+Syntax
+==========
+
+Access_Specifier static return_type methodName([Parameters])
+{
+	//code goes here
+}
+
+Demo : Implementing Static Method
+===========================
+public class StaticVariableDemo 
+{
+	static int var1;
+	int var2; //instance variable
+	
+	public StaticVariableDemo()
+	{
+		var1++;
+		var2++;
+	}
+	
+	public static void display()
+	{
+		System.out.println("Variable 1:"+var1);
+	}
+	
+	public static void main(String arg[])
+	{
+		StaticVariableDemo obj1=new StaticVariableDemo();
+		StaticVariableDemo obj2=new StaticVariableDemo();
+		StaticVariableDemo obj3=new StaticVariableDemo();
+		
+		StaticVariableDemo.display();
+		System.out.println("Variable 2:"+obj3.var2);
+		
+	}
+}
+
+Inheritance 
+====================
+- In java it is possible to use the existing class variable and method to create a new class.
+
+- This concept is called inheritance.
+
+- Inheritance is basically to reuse the existing properties and behaviours.
+
+- Before we go for inheritance we will discuss about the relationship.
+
+- A class to another class there are four different type of relationship which can exist.
+
+1. has-a		2.a-part-of		3.is-a		4.a-kind-of
+
+Example-1
+============
+
+	Student 		----> 	Course 		==> Has-a
+
+	Employee		---> 	Salary		==> Has-a 
+
+- If a class to another class there is has-a/a-part-of relationship exists then we need to implement composition.
+
+- In a composition one class object will be the member of another class.
+
+Demo : Implementing Composition
+==========================
+
+public class Course 
+{
+	String courseId,courseName;
+	int duration;
+	
+	public Course(String courseId,String courseName,int duration)
+	{
+		this.courseId=courseId;
+		this.courseName=courseName;
+		this.duration=duration;
+	}
+	
+	public void displayCourse()
+	{
+		System.out.println("Course ID:"+courseId);
+		System.out.println("Course Name:"+courseName);
+		System.out.println("Course Duration:"+duration);
+	}
+}
+
+
+public class Student 
+{
+	String studentId,studentName;
+	Course course;
+	
+	public Student(String studentId,String studentName,String courseId,String courseName,int duration)
+	{
+		this.studentId=studentId;
+		this.studentName=studentName;
+		course=new Course(courseId,courseName,duration);
+	}
+	public void displayStudentDetail()
+	{
+		System.out.println("Student ID:"+studentId);
+		System.out.println("Student Name:"+studentName);
+		course.displayCourse();
+	}
+}
+
+
+public class CompositionDemo 
+{
+	public static void main(String arg[])
+	{
+		Student student=new Student("S1001","Suresh","DTEJA","Digital Transforation for Java",2);
+		student.displayStudentDetail();
+	}
+}
+
+Example-2
+============
+
+	Employee		----> 	AdminEmployee	==> a-kind-of/is-a
+
+	Rectangle	---->	Shape		==> a-kind-of/is-a
+
+- for a-kind-of /is-a relationship we need to implement inheritance.
+
+- To implement inheritance we need to use the extends keyword.
+
+Syntax
+==========
+
+class Subclass_name extends Superclass_name
+{
+//code goes
+}
+
+Some of Terminologies in Inheritance
+==============================
+
+- Super Class -: This class which have the common properties and behaviours which all other classes will extend it. This is also term as Parent Class , Base Class, Generalized Class.
+
+- Sub Class -: This class which will use the common properties of the super class to the sub class. This class also term as Child Class or Derived class , Specific Class.
+
+
+Next Class [05-Oct-2017]
+=======================================
+1. Inheritance
+
+2. Method Overriding
+
+3. Abstract Method
+
+4. Abstract Class
+=======================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

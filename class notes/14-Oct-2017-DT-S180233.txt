@@ -1,0 +1,298 @@
+Deserialization
+================
+
+- In a deserialization process we make the permanent file content again to an object.
+
+- To implement deserialization we need to use the following class
+
+	1. ObjectInputStream
+
+Demo : Implementing ObjectInputStream
+====================================
+import java.io.*;
+public class ObjectReadDemo 
+{
+	public static void main(String arg[])
+	{
+		try
+		{
+			FileInputStream fileInputStream=new FileInputStream("c:\\Emp.txt");
+			ObjectInputStream objectInputStream=new ObjectInputStream(fileInputStream);
+			
+			Employee emp=(Employee)objectInputStream.readObject();
+			
+			System.out.println(emp);
+			
+			objectInputStream.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Arised:"+e);
+		}
+	}
+}
+
+
+Transient
+============
+
+- Transient is a modifier.
+
+- This modifier is used when we don't want any property of the class not to be serialized during the serialization then we can implement this keywod.
+
+- To make a particular variable as transient.
+
+transient datatype variable_name;
+
+Demo : 
+=======================
+
+import java.io.*;
+public class Employee implements Serializable
+{
+	private static final long serialVersionUID = 1L;
+	int empid;
+	String empname;
+	transient int salary;
+	
+	public Employee()
+	{}
+	public Employee(int empid,String empname,int salary)
+	{
+		this.empid=empid;
+		this.empname=empname;
+		this.salary=salary;
+	}
+	
+	public String toString()
+	{
+		return "Employee ID:"+empid+" Employee Name:"+empname+" Salary:"+salary;
+	}
+}
+
+
+Character Stream
+==================
+
+- Character Stream where we write and read the data by character.
+
+- There are two different classes which are provided to read and write.
+
+- The following are the two super classes for all character stream 
+
+	1. Reader			2. Writer
+
+
+Reader
+===========
+
+- This class is the super class of all other character stream reading classes.
+
+- Some of the classes which are derived from this 
+
+	1. FileReader		2.BufferedReader
+
+Demo : Reading the Character Stream
+=================================
+
+import java.io.*;
+public class FileReaderDemo 
+{
+	public static void main(String arg[])
+	{
+		try 
+		{
+			FileReader fileReader=new FileReader("c:\\file1.txt");
+			char buff[]=new char[100];
+			
+			int bytesRead=fileReader.read(buff);
+			
+			String content=new String(buff);
+			
+			System.out.println(content);
+			
+			System.out.println("The number of bytes read:"+bytesRead);
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		
+	}
+}
+
+Demo : Reading using BufferedReader
+================================
+import java.io.*;
+public class FileReaderDemo 
+{
+	public static void main(String arg[])
+	{
+		try 
+		{
+			FileReader fileReader=new FileReader("c:\\Hello.txt");
+			
+			BufferedReader bufferedReader=new BufferedReader(fileReader);
+			
+			String lineContent=bufferedReader.readLine();
+			
+			System.out.println(lineContent);
+			
+			
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		
+	}
+}
+
+
+Writer
+============
+
+- This class is the super class of all other character stream writing classes
+
+JDBC - Java Database Connectivity
+==============================
+
+- This is an API which is trying to connect our java application to the database.
+
+- This API (Application Programming Interfaces) will manipulate with the database.
+
+- Java provided java.sql package where number of classes and interfaces which are available to do this operations.
+
+Steps to implement JDBC
+=====================
+
+Step 1: import java.sql package.
+
+import java.sql.*;
+
+Step 2: Load and register the driver
+
+Driver : It is an interface between your java application to the database.
+
+There are various kind of drivers are there 
+
+1. Type 1 : JDBC-ODBC Bridge Driver : Mostly used in Windows Envirnoment.
+
+2. Type 2 : Native Driver		: Middle ware
+
+3. Type 3 : Native Partly Driver	: Middle ware
+
+4. Type 4 : Thin Driver 		: Mostly used drivers in the applications
+
+- Driver are classes we can load the objec that class in the memory and we can use it.
+
+- For each vendor database we have different jar file we need to incorporate to the application.
+
+- To load the class we need to use the forName() method of class Class which is java.lang package.
+
+	Class.forName("org.h2.Driver");
+
+- The other way we can also register i.e
+
+	DriverManager.registerDriver(new org.h2.Driver());
+
+	
+Step 3: Creating a connection object.
+
+- To create a connection object we need to call the getConnection() method on DriverManager class.
+
+Connection connection=DriverManager.getConnection(url,username,password);
+
+Step 4: Creating a Statement Object
+
+- To create a statement object we need to call the createStatement() method of the connection object.
+
+Statement statement=connection.createStatement();
+
+- There are different kind of Statements which are available.
+
+1. Statement
+	
+	: If we want to implement the static sql statements then we can use this.	
+
+2. PreparedStatement
+
+	:If we want to implement the runtime sql statement then we can use the PreparedStatement.
+
+PreparedStatement preparedStatement = conn.prepareStatement(query);
+
+3. CallableStatement 
+
+	: If we want to implement the stored procedure then we need to implement this.
+
+CallableStatement callStatement=conn.prepareCall("?proc_name");
+
+Step 5: Prepare the ResultSet
+
+	- To prepare the resultset we need to call the executeQuery method on statement object.
+
+	ResultSet res=statement.executeQuery("select * from Student");
+
+
+Step 6 : Process the ResultSet
+
+	- To process the resultset we need to use getXXX() method.
+
+	while(rs.next())
+	{
+		//code goes here
+	}
+
+
+Step 7 : Close the resultset and statement object.
+
+	res.close();
+	statement.close();
+
+=================================
+Next Class : 16-Oct-2017 : Core Java End
+1. JDBC Program
+2. Thread 
+=================================
+17-Oct-2017 - Tuesday
+Thread 
+Html
+==================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

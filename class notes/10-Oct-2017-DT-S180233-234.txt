@@ -1,0 +1,357 @@
+3. ListIterator
+==============
+
+- ListIterator is also an interface in java.util package used for traversal for list type collection.
+
+- Using this interface we can traverse the collection forward as well as backward.
+
+- using this interface we can also update the elements.
+
+- This interface has extended the Iterator interface.
+
+Demo : Implementing List Interface
+=============================
+
+import java.util.*;
+public class ListDemo 
+{
+	public static void main(String arg[])
+	{
+		ArrayList listItems=new ArrayList();
+		
+		//To store the element in the collection we need to use add() method.
+
+		listItems.add("Sunil");//upcasting
+		listItems.add("Kiran");
+		listItems.add("Vinod");
+
+		listItems.add(100);
+		listItems.add(200);
+
+		ListIterator iterator=listItems.listIterator();
+		
+		System.out.println(listItems);
+		
+		while(iterator.hasNext())
+		{
+			Object element=iterator.next();
+			if(element instanceof String)
+			{
+				String str=(String) element;
+				System.out.println(str);
+				if(str.equals("Vinod"))
+					iterator.set("Mohan");;
+			}
+			else if(element instanceof Integer)
+				System.out.println((Integer)element);
+			else {}
+		}
+		
+		System.out.println(listItems);
+	}
+}
+
+
+Set Collection
+================
+
+- It is also called as unordered collection.
+
+- Unordered collection means how the elements are added we can't anticipate.
+
+- This type of collection will not take duplicate values.
+
+- Some of the Classes of this type of Collection are
+
+	1. HashSet		2.LinkedHashSet		3.TreeSet
+
+1.HashSet : The Order we can't anticipate and it is going to store the elements based on the hash function.
+
+2.LinkedHashSet : Derived from HashSet and it is going to show the elements based on the order how we have been added.
+
+3.TreeSet : This type of collection will store the elements in a sorted manner.
+
+Demo : Displaying the set type of Collection
+===================================
+
+import java.util.*;
+public class SetDemo 
+{
+	public static void main(String arg[])
+	{
+		HashSet hashSet=new HashSet();
+		
+		hashSet.add("Vinod");
+		hashSet.add("Fareed");
+		hashSet.add("Burhan");
+		hashSet.add("Kumar");
+		hashSet.add("Vinod");
+		
+		System.out.println("Hashset Elements:"+hashSet);
+		
+		LinkedHashSet linkedSet=new LinkedHashSet();
+		
+		linkedSet.add("Vinod");
+		linkedSet.add("Fareed");
+		linkedSet.add("Burhan");
+		linkedSet.add("Kumar");
+		linkedSet.add("Vinod");
+		
+		System.out.println("LinkedHashset Elements:"+linkedSet);
+		
+		TreeSet treeSet=new TreeSet();
+		
+		treeSet.add("Vinod");
+		treeSet.add("Fareed");
+		treeSet.add("Burhan");
+		treeSet.add("Kumar");
+		
+		System.out.println("Treeset Elements:"+treeSet);		
+	}
+}
+
+Generics
+============
+- Generic are added from jdk1.5 version onwards.
+
+- In generics will avoid the runtime error.
+
+- Generic are used for typesafety.
+
+Demo : Non Generic Implementation
+===========================
+
+import java.util.*;
+public class GenericDemo 
+{
+	public static void main(String arg[])
+	{
+		
+		ArrayList listItem=new ArrayList();
+		
+		listItem.add("Sunil");
+		listItem.add("Gagan");
+		
+		Integer intr=(Integer)listItem.get(0);
+		
+		System.out.println(intr);
+		
+		
+	}
+}
+
+In the above code there will no compilation error as per the program.
+
+But however when we are trying to convert the string to an integer then It will give the error at runtime.
+
+- Here because we have not  implemented generic hence this type conversion problem occurs.
+
+- To avoid this situation we need to implement generic.
+
+ArrayList listItem=new ArrayList(); 
+
+- The above one is a non generic arraylist. To convert it to the generic type
+
+ArrayList<String> listItem=new ArrayList<String>();
+
+- Now the arraylist will take only string.
+
+Demo : Implementing Generic Collection
+=====================================
+import java.util.*;
+public class GenericDemo 
+{
+	public static void main(String arg[])
+	{
+		
+		ArrayList<String> listItem=new ArrayList<String>();
+		
+		listItem.add("Sunil");
+		listItem.add("Gagan");
+		
+		String str=listItem.get(0);
+		
+		System.out.println(str);		
+	}
+}
+
+Sorting the Collection
+=================
+
+- To sort a collection we have two different ways they are
+
+1. By using Comparable Interface		2. By using Comparator Interface
+
+1.Comparable Interface
+===================
+
+- This is an interface which is having only one method compareTo().
+
+- We need to implement this interface to the class whose objects need to be sorted.
+
+- Comparable interface is available in java.lang package.
+
+Demo : 
+=================
+public class Employee implements Comparable<Employee>
+{
+	int empId;
+	String empName;
+	double salary;
+	
+	public Employee(int empId,String empName,double salary)
+	{
+		this.empId=empId;
+		this.empName=empName;
+		this.salary=salary;
+	}
+	
+	public String toString()
+	{
+		return "Employee ID:"+empId+" Employee Name:"+empName+" Salary:"+salary;
+	}
+
+	@Override
+	public int compareTo(Employee arg0) 
+	{
+		if(this.salary>arg0.salary)
+			return 1;
+		else if(this.salary<arg0.salary)
+			return -1;
+		else
+			return 0;
+	}
+
+	
+}
+
+import java.util.*;
+public class SortEmployee 
+{
+	public static void main(String arg[])
+	{
+		TreeSet<Employee> listEmployees=new TreeSet<Employee>();
+		
+		listEmployees.add(new Employee(1001,"Vinod",78000));
+		listEmployees.add(new Employee(1003,"Arun",58000));
+		listEmployees.add(new Employee(1002,"Sunita",88000));
+		listEmployees.add(new Employee(1004,"Kishore",28000));
+		
+		for(Employee employee:listEmployees)
+		{
+			System.out.println(employee);
+		}
+		
+	}
+}
+
+2.Comparator Interface
+======================
+
+- Comparator interface is available in java.util package.
+
+- When we implement Comparator interface we will create a separate class which can be Sort class and here we will write the logic to sort the elements.
+
+- This interface is having a method called compare() which will take two arguments.
+
+
+public class Student 
+{
+	int studId;
+	String studName;
+	int age;
+	
+	public Student(int studId,String studName,int age)
+	{
+		this.studId=studId;
+		this.studName=studName;
+		this.age=age;
+	}
+	
+	public int getStudId() {
+		return studId;
+	}
+	public String getStudName() {
+		return studName;
+	}
+	public int getAge() {
+		return age;
+	}	
+}
+
+import java.util.Comparator;
+
+public class SortNameWise implements Comparator<Student> 
+{
+
+	@Override
+	public int compare(Student arg0, Student arg1) 
+	{
+		return arg0.studName.compareTo(arg1.studName);
+	}
+
+}
+
+import java.util.*;
+public class MainStudentSort 
+{
+	public static void main(String arg[])
+	{
+		ArrayList<Student> listStudents=new ArrayList<Student>();
+		
+		listStudents.add(new Student(1001,"Suresh",18));
+		listStudents.add(new Student(1004,"Arun",12));
+		listStudents.add(new Student(1002,"Kiran",14));
+		listStudents.add(new Student(1003,"Daniel",16));
+		
+		Collections.sort(listStudents,new SortNameWise());
+		
+		for(Student student:listStudents)
+		{
+			System.out.print("ID:"+student.getStudId());
+			System.out.print("Name:"+student.getStudName());
+			System.out.println("Age:"+student.getAge());
+		}
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,292 @@
+Logic Program : Write a Program to add the digits of a given number.
+====================================================
+
+import java.util.*;
+public class AddingDigits 
+{
+	public static void main(String arg[])
+	{
+		int var1,result=0,reminder;
+		
+		System.out.println("Enter the Value:");
+		Scanner scanner=new Scanner(System.in);
+		var1=scanner.nextInt();
+		
+		while(var1>0)
+		{
+			reminder=var1%10;
+			result=result+reminder;
+			var1=var1/10;
+		}
+		
+		System.out.println("Added Digits Result:"+result);
+	}
+}
+
+
+Refractored Code
+====================
+import java.util.*;
+public class AddingDigits 
+{
+	public static void main(String arg[])
+	{
+		int var1,result=0;
+		
+		System.out.println("Enter the Value:");
+		Scanner scanner=new Scanner(System.in);
+		var1=scanner.nextInt();
+		
+		while(var1>0)
+		{
+			result+=(var1%10);
+			var1/=10;
+		}
+		
+		System.out.println("Added Digits Result:"+result);
+	}
+}
+
+Method Implementation
+======================
+import java.util.*;
+public class AddingDigits 
+{
+	public static void main(String arg[])
+	{
+		int var1,result=0;
+		
+		System.out.println("Enter the Value:");
+		Scanner scanner=new Scanner(System.in);
+		var1=scanner.nextInt();
+
+		result=calcDigits(var1);
+		
+		System.out.println("Added Digits Result:"+result);
+	}
+	
+	public static int calcDigits(int var1)
+	{
+		int result=0;
+		while(var1>0)
+		{
+			result+=(var1%10);
+			var1/=10;
+		}
+		return result;
+	}
+}
+
+
+Demo : Write a Program to check whether a given number is prime.
+
+import java.util.*;
+public class PrimeNumberDemo 
+{
+	public static void main(String arg[])
+	{
+		int var1,flag=0,count;
+		
+		System.out.println("Enter the Value:");
+		Scanner scanner=new Scanner(System.in);
+		var1=scanner.nextInt();
+		
+		for(count=2;count<=var1/2;count++)
+		{
+			if(var1%count==0)
+			{
+				flag=1;
+				break;
+			}
+		}
+		
+		if(flag==0)
+				System.out.println("Prime Number");
+		else
+				System.out.println("Not a Prime");
+	}
+}
+
+
+Demo : Implementing Method for Checking Prime Number
+================================================
+
+import java.util.*;
+public class PrimeNumberDemo 
+{
+	public static void main(String arg[])
+	{
+		int var1;
+		
+		System.out.println("Enter the Value:");
+		Scanner scanner=new Scanner(System.in);
+		var1=scanner.nextInt();
+		
+		if(isPrime(var1))
+			System.out.println("Prime Number");
+		else
+			System.out.println("Not a Prime Number");
+		
+	}
+	
+	public static boolean isPrime(int var1)
+	{
+		int count;
+		boolean flag=true;
+		for(count=2;count<=var1/2;count++)
+		{
+			if(var1%count==0)
+			{
+				flag=false;
+				break;
+			}
+		}
+		
+		return flag;
+	}
+}
+
+
+Demo : Generating the Prime Numbers
+================================
+import java.util.*;
+public class PrimeNumberDemo 
+{
+	public static void main(String arg[])
+	{
+		int var1;
+		
+		for(var1=2;var1<=100;var1++)
+		{
+		
+		if(isPrime(var1))
+			System.out.println("Prime Number:"+var1);
+		}
+		
+	}
+	
+	public static boolean isPrime(int var1)
+	{
+		int count;
+		boolean flag=true;
+		for(count=2;count<=var1/2;count++)
+		{
+			if(var1%count==0)
+			{
+				flag=false;
+				break;
+			}
+		}
+		
+		return flag;
+	}
+}
+
+
+Demo : Write a Program to reverse a given number.
+
+import java.util.*;
+public class ReverseNumber 
+{
+	public static void main(String arg[])
+	{
+		int var1,reverse=0;
+		
+		System.out.println("Enter the Value");
+		Scanner scanner=new Scanner(System.in);
+		var1=scanner.nextInt();
+		
+		while(var1>0)
+		{
+			reverse=(reverse*10)+(var1%10);
+			var1/=10;
+		}
+		
+		System.out.println("Reverse of Number:"+reverse);
+	}
+}
+
+
+Demo : Write a Program to check whether a given number is Palindrome.
+
+import java.util.*;
+public class ReverseNumber 
+{
+	public static void main(String arg[])
+	{
+		int var1,reverse=0,temp;
+		
+		System.out.println("Enter the Value");
+		Scanner scanner=new Scanner(System.in);
+		var1=scanner.nextInt();
+		temp=var1;
+		while(var1>0)
+		{
+			reverse=(reverse*10)+(var1%10);
+			var1/=10;
+		}
+		
+		if(reverse==temp)
+			System.out.println("Palindrome Number");
+		else
+			System.out.println("Not a Palindrome");
+	}
+}
+
+
+
+Demo : Write a program to check whether a number is a palindrome using method
+
+import java.util.*;
+public class ReverseNumber 
+{
+	public static void main(String arg[])
+	{
+		int var1;
+		
+		System.out.println("Enter the Value");
+		Scanner scanner=new Scanner(System.in);
+		var1=scanner.nextInt();
+		
+		if(isPalindrome(var1))
+			System.out.println("Palindrome Number");
+		else
+			System.out.println("Not a Palindrome Number");
+			
+		
+	}
+	
+	public static boolean isPalindrome(int var1)
+	{
+		int temp,reverse=0;
+		temp=var1;
+		while(var1>0)
+		{
+			reverse=(reverse*10)+(var1%10);
+			var1/=10;
+		}
+		
+		return temp==reverse;
+	}
+}
+
+
+===========================================
+
+Next class is on 03-Oct-2017 - Tuesday
+
+============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+

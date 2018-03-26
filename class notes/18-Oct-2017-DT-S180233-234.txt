@@ -1,0 +1,295 @@
+Pargraph Tag
+================
+
+- To implement paragraph in our web page we need to use the <p> tag.
+
+<p align="left|right|center|justify"> Paragraph Content</p>
+
+Demo : Implementing Paragraph
+==========================
+<html>
+<head>
+	<title>Heading Example</title>
+</head>
+<body>
+	<h1 align="center">Resume</h1>
+
+	<p align="justify">
+By user action event occurs in the web pages and to handle them generally we write javascript code. In javascript we need to write the different code for different browser which is tedius. To avoid that jQuery has provided a common API for implementing event handling in any browser. Ajax - Asynchronous javascript and Xml. Basically ajax is used when we are trying to write the asynchronous based programming. Basically in traditional web application if any request goes to the server then until the response comes from the ser the client has to wait and it can't do any work during that time. This is a typical example of synchronous activity.
+	</p>
+</body>
+</html>
+
+
+Style Tags
+==============
+
+- We can implement various style to the text like
+
+	1. Italic 		<i> Content</i>
+
+	2. Bold		<b>Content </b> or <strong>Content </strong>
+
+	3. Underline	<u>Content</u>
+
+
+Horizontal Line
+===================
+
+- To create horizontal line we need to implement <hr> tag.
+
+<hr width="100%" color="red"/>
+
+Font Tag
+==================
+
+Font tag is used for applying the font to the text of the web page the below is the syntax.
+
+<font color="red" size="6" face="Verdana"> Content </font>
+
+Image
+===============
+
+- We can add images to the web page.
+
+- To add the images to the web pages we need to use the following tag.
+
+<img src="path_of_image" width="x" height="y"/>
+
+Demo : Implementing the Tags (<img> , <font> , <hr> etc)
+============================================
+
+<html>
+<head>
+	<title>Heading Example</title>
+</head>
+<body>
+	<h3 align="center"><u>Resume</u></h1>
+
+	<hr width="100%" height="5%" color="blue"/>
+
+	<p align="justify">
+	<font color="blue" face="Monotype Corsiva" size="4">
+By user action event occurs in the web pages and to handle them generally we write javascript code. In javascript we need to write the different code for different browser which is tedius. To avoid that jQuery has provided a common API for implementing event handling in any browser. Ajax - Asynchronous javascript and Xml. Basically ajax is used when we are trying to write the asynchronous based programming. Basically in traditional web application if any request goes to the server then until the response comes from the ser the client has to wait and it can't do any work during that time. This is a typical example of synchronous activity.
+	</font></p>
+
+	<img src="e:\images\Peacock1.jpg" width="150 height="150"/>
+</body>
+</html>
+
+Hyperlink
+=============
+
+- To implement the hyperlink we need to implement <a> tag.
+
+<a href="path_of_page"> LinkText </a>
+
+<html>
+<body>
+
+<h2>Hyperlink Demos- Connecting to Other Pages</h2>
+
+<a href="Demo1.html"> Demo 1 Page </a>
+
+<br/>
+
+<a href="Demo1.html#para3"> Demo1 Page - Paragraph 3</a>
+
+<h3> Hyperlink to Connect WebSites</h3>
+
+<a href="http://niitskilltest.appspot.com">Website 1 </a>
+
+<h3> Hyperlink to Mail </h3>
+
+<a href="mailto:srinssit@gmail.com"> MyEmail </a>
+
+</body>
+</html>
+
+Table Creation
+=================
+ 
+- We can implement or create the table using <table> tag
+
+
+<html>
+<head>
+	<title> Table Demo</title>
+</head>
+<body>
+
+<table align="center" border="1">
+	<tr bgcolor="pink">
+		<td> Student ID</td>
+		<td> Student Name</td>
+		<td> Address</td>
+		<td> Age</td>
+	</tr>
+	<tr>
+		<td> S1001</td>
+		<td> Suresh</td>
+		<td> Hyderabad</td>
+		<td> 23</td>
+	</tr>
+	<tr>
+		<td> S1002</td>
+		<td> Vinod</td>
+		<td> Hyderabad</td>
+		<td> 22</td>
+	</tr>
+	<tr>
+		<td> S1003</td>
+		<td> Kishore</td>
+		<td> Hyderabad</td>
+		<td> 21</td>
+	</tr>
+	<tr>
+		<td colspan="3">Average Age</td>
+		<td>22</td>
+	</tr>
+</table>	
+
+Form 
+===============
+
+- Form is a container component which can take the data and send it to the server.
+
+- Form tag syntax is
+
+<form action="Server_Resource" method="get|post">
+
+//form Components
+
+</form>
+
+Get : in this request method the data will be sent in address bar.
+
+Post : In this type of request method the data will be sent using securied manner.
+
+Different Form Components
+=====================
+
+Input
+=======
+
+1. TextField
+
+<input type="text" name="username"/>
+
+2. Password
+
+<input type="password" name="password"/>
+
+3. Hidden
+
+<input type="hidden" name="salary"/>
+
+4. File Uploading
+
+<input type="file" name="attachment"/>
+
+5. Radio
+
+<input type="radio" name="gender" value="Male">Male
+
+6. Checkbox
+
+<input type="checkbox" name="hobbies" value="Swimming"> Swimming
+
+7. Submit Button
+
+<input type="submit" value="LogIn"/>
+
+8. Reset Button
+
+<input type="reset" value="RESET"/>
+
+Demo : Implementation of Form Component
+==================================
+
+<html>
+<head>
+	<title>Form Demo</title>
+</head>
+<body>
+
+<table align="center">
+<thead bgcolor="pink">
+	<td colspan="2"> <center>SignUp Here</center></td>
+</thead>
+<tr>
+<td>User Name </td><td><input type="text" name="username"/></td>
+</tr>
+<tr>
+<td>Password</td><td> <input type="password" name="passwd"/></td>
+</tr>
+<tr>
+<td>Customer Name</td><td> <input type="text" name="custname"/></td>
+</tr>
+<tr>
+<td>Gender</td><td><input type="radio" name="gender" value="M"/>Male<input type="radio" name="gender" value="F"/>Female</td>
+</tr>
+<tr>
+<td>Address</td>
+<td><textarea name="addr" rows="6" cols="20"/></textarea></td>
+</tr>
+<tr bgcolor="gray">
+<td colspan="2" >
+<center>
+<input type="submit" value="SUBMIT"/>
+<input type="reset" value="RESET"/>
+</center>
+</td></tr>
+</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

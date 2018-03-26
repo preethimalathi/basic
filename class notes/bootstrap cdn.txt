@@ -1,0 +1,159 @@
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Logout - method
+FileUpload - profile picture..
+
+
+Authentication
+UserDao
+
+login- query for authentication..
+from User where username=? and password=?
+
+Client -> User object to server side code [user.getUsername() and user.getPassword() - to get the values entered by the client]
+
+
+Controller - server side code[back end]
+
+if username and password exists - return User , OK
+if username and password doesnt exists - return Error, UNAUTHORIZED
+
+
+client side controller [front end]
+For success - redirect the user to the home page
+For exceptional condition - redirect the user to login page with message "Invalid username and password"
+
+$scope.user=respone.data => 'user' attribute cannot be accesed in index.html page..
+$rootScope.currentUser=response.data
+
+
+{{currentUser.username}} - this will display username in index.html page - nav
+
+
+Hiding few links - ng-hide
+Making few links visible - ng-show
+
+
+
+Register, login - [hide these two links when the user logged in] ng-hide=""  if expression contains some value - ng-hide is true
+welcome username - [show this link only when the user logged in]
+
+ng-hide="currentUser.username" - if user login then username will have some value
+
+
+ng-show="currentUser.username" 
+
+response object from Server side code.
+
+response object has two properties [status and data]
+
+data [user object]/[error object] => user is invalid[error] user is valid[User]
+
+
+function(response){response.data,response.status}
+function(response){response.data.}
+
+Error -> response.data
+
+
+
+
+
+Primary key - unique, not null 
+
+
+user
+
+id pk , username[PK] password email ....
+
+[username - is used for authentication
+password]
+username - unique and not null
+password - not null
+
+Primary key cannot have null values and also it should be unique
+
+Unique key can have null values it should be distinct
+
+Why to use cookies?
+
+$rootScope will get deleted when u reload the web page..
+
+we need some object which has to get destroyed only when the user logout.
+
+cookies - some data about the user will get stored in the client machine..[Data - user details]
+
+ngCookies -- to used $cookieStore
+
+
+
+$cookieStore - to store some detail in client machine.
+it is in the module  - ngCookies..
+
+
+Spring Security module - Principal 
+
+HttpSession - to maintain session - user object has to be maintained until user logout..
+
+CookieStore - to store user details..
+
+HttpSession - it will get created when u make a first request..
+HttSession - will be ma 
+
+
+e-commerce
+
+username and password- logged in - Authenticated..  server 
+to view list of products..server [new request, new user]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,384 @@
+Methods in a class
+=================
+
+- Methods in class can be implemented for two different purposes.
+
+1. Giving the public interface to the private data members.
+
+- Generally the class member variables or the properties are declared as private to make it secured from other class accessing directly.
+
+- If the other class access directly then there may be a chance of assigning irrelevant value which leads to an inconsistency value.
+
+- Hence if the variable declared as private then in the other we can't directly access the variable hence we use method to access this variable.
+
+
+public class Triangle 
+{
+	double base,height;
+}
+
+
+public class TriangleMain 
+{
+	public static void main(String arg[])
+	{
+		Triangle triangle=new Triangle();
+		
+		triangle.base=10.0;
+		triangle.height=-15.0;
+		
+		double area;
+		area=0.5 * (triangle.base*triangle.height);
+		
+		System.out.println("Area of the Triangle:"+area);
+	}
+}
+
+- In the above triangle.height has been given a negative value hence it is irrelevant so the variables shoule be made private so that other class they can't assign the value directly and they need to assign the value using method.
+
+- When we assign the value through the method we can validate the value and then we can send an error message or we can do other things.
+
+
+public class Triangle 
+{
+	private double base,height;
+}
+
+- Now I had made the variable as private hence in TriangeMain it can't access 
+
+- To access the variable we need to write getter and setter methods in Triangle class.
+
+- Getter method is used for accessing the value and setter method is used for assigning the value.
+
+- Getter is called accessor and setter is called mutator.
+
+Setter Method
+==================
+
+Syntax
+=========
+
+Access_Specifier void setVariableName(DataType variable_name)
+{
+	class_scope_variable=(variable_name>0)?variable_name:1;
+}
+
+public void setBase(double b)
+{
+	base=(b>0)?b:1;
+
+	/*
+	if(b>0)
+		base=b;
+	else
+		base=1;
+	*/
+}
+
+Getter Method
+=====================
+
+Syntax
+===========
+Access_Specifier return_type getVariableName()
+{
+	return class_scope_variable;
+}
+
+Example
+==========
+
+public double getBase()
+{
+	return base;
+}
+
+Demo Implementing Getter and Setter Method
+=======================================
+
+
+public class Triangle 
+{
+	private double base,height; //class scope variable
+	
+	public void setBase(double b)
+	{
+		base=(b>0)?b:1;
+	}
+	
+	public double getBase()
+	{
+		return base;
+	}
+
+	public double getHeight() 
+	{
+		return height;
+	}
+
+	public void setHeight(double height) 
+	{
+		this.height = (height>0)?height:1;
+	}
+	
+	
+}
+
+
+
+public class TriangleMain 
+{
+	public static void main(String arg[])
+	{
+		Triangle triangle=new Triangle();
+		
+		triangle.setBase(10.0);
+		triangle.setHeight(-15);
+		
+		double area;
+		area=0.5 * (triangle.getBase()*triangle.getHeight());
+		
+		System.out.println("Area of the Triangle:"+area);
+	}
+}
+
+2. Manipulating the object data members
+
+- These methods which are going to manipulate with the object data members.
+
+- Manipulation mean like Arithmetic , Logical  etc.
+
+Demo : Implementing Manipulation Method.
+====================================
+
+public class Triangle 
+{
+	private double base,height; //class scope variable
+	
+	//Getter and Setter Methods
+	public void setBase(double b)
+	{
+		base=(b>0)?b:1;
+	}
+	
+	public double getBase()
+	{
+		return base;
+	}
+
+	public double getHeight() 
+	{
+		return height;
+	}
+
+	public void setHeight(double height) 
+	{
+		this.height = (height>0)?height:1;
+	}
+	
+	//Object Manipulation Method
+	
+	public double area()
+	{
+		return 0.5*base*height;
+	}
+	
+}
+
+
+
+public class TriangleMain 
+{
+	public static void main(String arg[])
+	{
+		Triangle triangle=new Triangle();
+		
+		triangle.setBase(10.0);
+		triangle.setHeight(-15);
+		
+		System.out.println("Area of the Triangle:"+triangle.area());
+	}
+}
+
+
+Home Task
+=================
+
+- Write a class called Box with data member as width,height,depth and write their getter and setter methods and a manipulation method called volume. Call this class from another class.
+
+- Write a class called Employee with data member as empid,empname,basic,hra,da and write the getter and setter method and a manipulatio method called calcSalary(). 
+
+Constructor
+===============
+- Constructor is a special function or method which does not return any value.
+
+- It has the same name as that of the class name.
+
+- It initializes the data members of the object.
+
+- It called automatically when an object gets created.
+
+- We can write multiple constructor with in the same class.
+
+Demo : Calling of Constructor
+=======================
+
+public class ConstructorDemo 
+{
+	public ConstructorDemo()
+	{
+		System.out.println("I am in Constructor");
+	}
+	
+	public static void main(String arg[])
+	{
+		System.out.println(" I am in Main Method");
+		ConstructorDemo obj=new ConstructorDemo();//object created
+		System.out.println("I am again in Main Method");
+		
+	}
+}
+
+Output 
+===============
+I am in Main Method
+I am in Constructor
+I am again in Main Method
+
+Demo : Multiple Constructor in a class
+=================================
+
+public class Triangle 
+{
+	private double base,height; //class scope variable
+	
+	public Triangle() //Default Constructor
+	{
+		base=10;
+		height=8;
+	}
+	
+	public Triangle(double b,double h) //Parameterized Constructor
+	{
+		base=b;
+		height=h;
+	}
+	
+	//Getter and Setter Methods
+	public void setBase(double b)
+	{
+		base=(b>0)?b:1;
+	}
+	
+	public double getBase()
+	{
+		return base;
+	}
+
+	public double getHeight() 
+	{
+		return height;
+	}
+
+	public void setHeight(double height) 
+	{
+		this.height = (height>0)?height:1;
+	}
+	
+	//Object Manipulation Method
+	
+	public double area()
+	{
+		return 0.5*base*height;
+	}
+	
+}
+
+
+
+public class TriangleMain 
+{
+	public static void main(String arg[])
+	{
+		Triangle triangle=new Triangle();
+		
+		System.out.println("Area of the First Triangle:"+triangle.area());
+		
+		Triangle triangle_paramConstructor=new Triangle(12,14);
+		
+		System.out.println("Area of the Second Triangle:"+triangle_paramConstructor.area());
+	}
+}
+
+
+Method Overloading
+===================
+
+- It is possible to write two or more methods with the same name provide with different signatures. These methods are called as overloaded methods and the process is called method overloading.
+
+Signature include
+===============
+1. Type of the Parameters
+	
+	add(int a,int b);
+	add(double a,double b);
+	
+2. Order of the Parameters
+
+	add(int a , float b);
+	add(float a , int b);
+
+3. Number of the Parameters
+
+	add(int a,int b)
+	add(int a,int b ,int c)
+
+Note : Return type will not be included in signature.
+
+	int add()
+	float add()
+
+- The above one is wrong as return type wise we can't overload
+
+
+Demo : Implementing Overloading of Method
+==================================
+
+public class OverloadMethod 
+{
+	public int add(int num1,int num2)
+	{
+		return num1+num2;
+	}
+	public int add(int num1,int num2,int num3)
+	{
+		return num1+num2+num3;
+	}
+	public double add(double d1,double d2)
+	{
+		return d1+d2;
+	}
+	
+	public static void main(String arg[])
+	{
+		OverloadMethod overloadObject=new OverloadMethod();
+		
+		System.out.println("Add Method with 2 Parameter:"+overloadObject.add(10,20));
+		System.out.println("Add Method with 3 Parameter:"+overloadObject.add(10,20,30));
+		System.out.println("Add Method with double Parameter:"+overloadObject.add(10.4,20.5));
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
