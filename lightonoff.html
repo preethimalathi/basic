@@ -1,0 +1,34 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Bulb ON/OFF Project</title>
+    
+    
+</head>
+
+<body>
+<center>
+    <header>
+        <h1>Light Bulb</h1>
+    </header>
+    <section>
+        <img src="https://i.postimg.cc/KjK1wL3c/hidden-bulb.png" id="bulb" width="200">
+        <br><br>
+            <button id="btn1" onclick="turn_on()">Activate</button>
+            <button id="btn2" onclick="turn_off()">Deactivate</button>
+     </section>
+</center>
+    
+    <script>
+    	function turn_on(){
+    	document.getElementById('bulb').src='https://i.postimg.cc/6QyTynzr/lit-bulb.png';
+    	}
+    	function turn_off(){
+    	document.getElementById('bulb').src='https://i.postimg.cc/KjK1wL3c/hidden-bulb.png';
+    	}
+    </script>
+</body>
+</html

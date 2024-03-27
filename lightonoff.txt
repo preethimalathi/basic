@@ -1,0 +1,80 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unrecognized Project</title>
+    
+    <style>
+    	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+    	*{
+    	margin: 0;
+    	padding: 0;
+    	box-sizing: border-box;
+    	}
+    	body{
+    	font-family: 'Roboto', sans-serif;
+    	}
+    	header{
+    	height: 70px;
+    	width: 100%;
+    	background: #5271FF;
+    	color: #fff;
+    	display: flex;
+    	justify-content: center;
+    	align-items: center;
+    	font-size: 22px;
+    	}
+    	section{
+    	width: 100%;
+    	height: 400px;
+    	margin-top: 25%;
+    	display: flex;
+    	justify-content: center;
+    	align-items: center;
+    	flex-direction: column;
+    	}
+		img{
+		    width: 350px;		
+		    		
+		   }
+    	.btn_container{
+    	margin-top: 30px;
+    	}
+    	.bulb_btn{
+    	font-family: 'Roboto', sans-serif;
+    	width: 120px;
+    	height: 40px;
+    	border: none;
+    	outline: none;
+    	cursor: pointer;
+    	background: #5271FF;
+    	color: #fff;
+    	font-size: 18px;
+    	}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Light Bulb</h1>
+    </header>
+    <section>
+        <img src="https://i.postimg.cc/KjK1wL3c/hidden-bulb.png" id="bulb" width="200">
+        <div class="btn_container">
+            <button id="btn1" class="bulb_btn" onclick="turn_on()">Activate</button>
+            <button id="btn2" class="bulb_btn" onclick="turn_off()">Deactivate</button>
+        </div>
+    </section>
+    
+    <script>
+    	function turn_on(){
+    	document.getElementById('bulb').src='https://i.postimg.cc/6QyTynzr/lit-bulb.png';
+    	}
+    	function turn_off(){
+    	document.getElementById('bulb').src='https://i.postimg.cc/KjK1wL3c/hidden-bulb.png';
+    	}
+    </script>
+</body>
+</html
